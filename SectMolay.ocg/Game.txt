@@ -1,0 +1,276 @@
+[Object]
+id=Trunk
+Properties=16;false;"Prototype"=DTrunk,"MeshTransformation"=n
+Category=1
+Plane=-1
+Rotation=22
+Size=100000
+Mass=40
+X=F2503698
+Y=F15321421
+R=F1441792
+Width=66
+Height=66
+Offset=-33,-33
+Vertices=2
+VertexX=9,-9
+VertexY=-23,23
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Trunk
+Properties=15;false;"Prototype"=DTrunk,"MeshTransformation"=n
+Category=1
+Plane=-1
+Rotation=53
+Size=100000
+Mass=40
+X=F13661249
+Y=F15921971
+R=F3473408
+Width=66
+Height=66
+Offset=-33,-33
+Vertices=2
+VertexX=20,-20
+VertexY=-15,15
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Trunk
+Properties=17;false;"Prototype"=DTrunk,"MeshTransformation"=n
+Category=1
+Plane=-1
+Rotation=218
+Size=100000
+Mass=40
+X=F19397664
+Y=F9993399
+R=F14286848
+Width=66
+Height=66
+Offset=-33,-33
+Vertices=2
+VertexX=-15,15
+VertexY=20,-20
+Picture=0,0,0,0
+OCF=2360001
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Trunk
+Properties=19;false;"Prototype"=DTrunk,"MeshTransformation"=n
+Category=1
+Plane=-1
+Rotation=21
+Size=100000
+Mass=40
+X=F577480
+Y=F4875051
+R=F1376256
+Width=66
+Height=66
+Offset=-33,-33
+Vertices=2
+VertexX=9,-9
+VertexY=-23,23
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Fern
+Properties=1;false;"Prototype"=DFern,"MeshTransformation"=n
+Category=1
+Plane=100
+Size=100100
+Mass=1
+X=F1521785
+Y=F17138924
+Picture=0,0,0,0
+OCF=2359489
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Fern
+Properties=5;false;"Prototype"=DFern,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=329
+Size=100100
+Mass=1
+X=F15973120
+Y=F17111758
+R=F21561344
+Picture=0,0,0,0
+OCF=12845249
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Rank
+Properties=9;false;"Prototype"=DRank,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=1
+Size=100000
+Mass=1
+X=F1762777
+Y=F13279583
+R=F65536
+Width=32
+Height=32
+Offset=-16,-16
+Picture=0,0,0,0
+OCF=2360001
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Rank
+Properties=10;false;"Prototype"=DRank,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=109
+Size=100000
+Mass=1
+X=F10132903
+Y=F11983266
+R=F7143424
+Width=32
+Height=32
+Offset=-16,-16
+VertexX=0,-3
+VertexY=0,-1
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Rank
+Properties=11;false;"Prototype"=DRank,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=15
+Size=100000
+Mass=1
+X=F18303026
+Y=F17062604
+R=F983040
+Width=32
+Height=32
+Offset=-16,-16
+VertexX=0,-1
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Rank
+Properties=12;false;"Prototype"=DRank,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=1
+Size=100000
+Mass=1
+X=F6311913
+Y=F17008272
+R=F65536
+Width=32
+Height=32
+Offset=-16,-16
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Rank
+Properties=13;false;"Prototype"=DRank,"MeshTransformation"=n
+Category=1
+Plane=100
+Rotation=152
+Size=100000
+Mass=1
+X=F17135411
+Y=F7280865
+R=F9961472
+Width=32
+Height=32
+Offset=-16,-16
+VertexX=0,-1
+VertexY=0,-3
+Picture=0,0,0,0
+OCF=12845761
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Fern
+Properties=20;false;"Prototype"=DFern,"MeshTransformation"=n
+Category=1
+Plane=100
+Size=100100
+Mass=1
+X=F5832704
+Y=F6619136
+Picture=0,0,0,0
+OCF=12845249
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Fern
+Properties=24;false;"Prototype"=DFern,"MeshTransformation"=n
+Category=1
+Plane=100
+Size=100100
+Mass=1
+X=F11075584
+Y=F6029312
+Picture=0,0,0,0
+OCF=12845249
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Fern
+Properties=28;false;"Prototype"=DFern,"MeshTransformation"=n
+Category=1
+Plane=100
+Size=100100
+Mass=1
+X=F16813979
+Y=F6344196
+Picture=0,0,0,0
+OCF=2359489
+
+  [Mesh]
+  Valid=true
+
+[Script]
+"Prototype"=DGlobal

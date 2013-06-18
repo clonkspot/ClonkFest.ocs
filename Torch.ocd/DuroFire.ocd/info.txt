@@ -1,0 +1,1 @@
+A flame that doesn't go out even when spawned in materials, or colliding with the landscape.

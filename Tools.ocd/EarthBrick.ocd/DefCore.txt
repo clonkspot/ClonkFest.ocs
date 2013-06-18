@@ -1,0 +1,11 @@
+[DefCore]
+id=EarthBrick
+Version=5,2,0,1
+Category=C4D_Structure
+Width=20
+Height=8
+Offset=-10,-4
+SolidMask=0,0,20,8,0,0
+Value=10
+Mass=10
+Components=Wood=6;Metal=2;
