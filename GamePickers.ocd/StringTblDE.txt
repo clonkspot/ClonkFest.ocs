@@ -1,0 +1,2 @@
+Name=Pickers
+Description=Sammle so viele Beeren wie moeglich!

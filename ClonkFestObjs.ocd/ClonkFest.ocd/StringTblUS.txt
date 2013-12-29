@@ -1,0 +1,6 @@
+Name=Clonk fest
+Description=Party!!!
+FestHost=Pyrit
+WinFest=And the winner is: %s!
+WinGame=This round goes to %s.
+StartFest=Welcome to The Clonk Fest! We will play until someone has reached <c ffff00>%d</c> points.

@@ -1,0 +1,3 @@
+Name=Zeiger
+Description=Klicke auf das gesuchte Objekt!
+UsageHelp=Zielobjekt einfach anklicken.

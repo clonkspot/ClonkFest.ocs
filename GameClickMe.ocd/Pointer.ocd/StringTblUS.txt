@@ -1,0 +1,3 @@
+Name=Pointer
+Description=Click the hidden object!
+UsageHelp=Just click the target and it will disappear.

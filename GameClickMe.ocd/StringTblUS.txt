@@ -1,0 +1,2 @@
+Name=Wipf hunt
+Description=Find and click the Wipfs!

@@ -1,0 +1,2 @@
+Name=Klick mich!
+Description=Anklicken zum Gewinnen.

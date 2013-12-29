@@ -1,0 +1,3 @@
+Name=Clonk Fest game
+Description=Unknown game.
+MsgGo=Go!

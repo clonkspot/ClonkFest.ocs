@@ -1,0 +1,2 @@
+MsgAnd=und
+MsgNoone=keiner

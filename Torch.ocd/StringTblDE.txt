@@ -1,2 +1,0 @@
-Name=Fackel
-Description=Kann in der Werkstatt hergestellt werden. Erhellt auch die dunkelsten Minen.

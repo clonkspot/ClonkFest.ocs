@@ -1,0 +1,12 @@
+[DefCore]
+id=ClickMe_Target
+Version=5,2,0,1
+Category=C4D_StaticBack
+Width=24
+Height=30
+Offset=-12,-15
+Mass=10
+StretchGrowth=1
+Oversize=1
+Rotate=1
+IncompleteActivity=1

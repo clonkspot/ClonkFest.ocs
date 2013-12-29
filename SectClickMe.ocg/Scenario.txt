@@ -1,0 +1,2 @@
+[Landscape]
+MapZoom=15,0,5,15

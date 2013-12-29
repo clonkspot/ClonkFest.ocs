@@ -1,0 +1,3 @@
+Name=ClonkFest Spiel
+Description=Unbekanntes Spiel.Clonk fest level
+MsgGo=Los!

@@ -1,0 +1,2 @@
+Name=Wipfe suchen
+Description=Sucht die Wipfe und klickt sie an!

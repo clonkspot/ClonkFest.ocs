@@ -1,0 +1,2 @@
+Name=Click me!
+Description=Click to win.

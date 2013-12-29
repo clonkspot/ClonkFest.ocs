@@ -1,2 +1,0 @@
-Name=Torch
-Description=Can be produced in the tools workshop. Illuminates even the darkest caves.
