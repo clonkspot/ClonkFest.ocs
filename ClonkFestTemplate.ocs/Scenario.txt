@@ -1,0 +1,20 @@
+[Head]
+Icon=35
+Title=ClonkFest TEMPLATE
+Version=5,3,90
+NoInitialize=true
+
+[Definitions]
+Definition2=ClonkFest.ocs/ClonkFestObjs.ocd
+
+[Player1]
+
+[Player2]
+
+[Player3]
+
+[Player4]
+
+[Landscape]
+MapWidth=100,0,64,10000
+MapHeight=50,0,40,10000

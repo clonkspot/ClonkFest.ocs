@@ -1,0 +1,301 @@
+[Object]
+id=Chest
+Properties=1;false;"is_open"=b0,"Prototype"=DChest,"MeshTransformation"=E1
+Category=2
+Plane=200
+Size=100000
+Mass=60
+X=F3194201
+Y=F14448364
+Picture=0,0,0,0
+OCF=12845121
+Contents=3;4;5;6;7;8
+
+  [Mesh]
+  Valid=true
+
+    [AnimationNode]
+    Slot=1
+    Number=0
+    Type=Leaf
+    Animation=Open
+    Position=linear(F65,F0,F65,20,Hold,1939)
+
+[Object]
+id=Chest
+Properties=2;false;"is_open"=b0,"Prototype"=DChest,"MeshTransformation"=E2
+Category=2
+Plane=200
+Size=100000
+Mass=60
+X=F14776438
+Y=F14504712
+Picture=0,0,0,0
+OCF=12845121
+Contents=14;9;10;11;12;13
+
+  [Mesh]
+  Valid=true
+
+    [AnimationNode]
+    Slot=1
+    Number=0
+    Type=Leaf
+    Animation=Open
+    Position=linear(F65,F0,F65,20,Hold,1939)
+
+[Object]
+id=Bow
+Properties=3;false;"Prototype"=DBow,"animation_set"=E3
+Category=16
+Plane=500
+Size=100000
+Mass=10
+X=F3194201
+Y=F14448364
+Picture=0,0,0,0
+OCF=713
+Contained=1
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Bow
+Properties=14;false;"Prototype"=DBow,"animation_set"=E4
+Category=16
+Plane=500
+Size=100000
+Mass=10
+X=F14776438
+Y=F14504712
+Picture=0,0,0,0
+OCF=713
+Contained=2
+
+  [Mesh]
+  Valid=true
+
+[Object]
+id=Arrow
+Properties=4;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F3194201
+Y=F14448364
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=1
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=5;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F3194201
+Y=F14448364
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=1
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=6;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F3194201
+Y=F14448364
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=1
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=7;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F3194201
+Y=F14448364
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=1
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=8;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F3194201
+Y=F14448364
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=1
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=9;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F14776438
+Y=F14504712
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=2
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=10;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F14776438
+Y=F14504712
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=2
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=11;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F14776438
+Y=F14504712
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=2
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=12;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F14776438
+Y=F14504712
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=2
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Object]
+id=Arrow
+Properties=13;false;"count"=i15,"Prototype"=DArrow,"count_is_infinite"=b0,"Name"=s"15x Pfeile"
+Category=16
+Plane=500
+Size=100000
+Mass=8
+X=F14776438
+Y=F14504712
+R=F5898240
+Width=15
+Height=4
+Offset=-8,-2
+VertexX=6,-6
+VertexY=0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,-6,6
+VertexFriction=120,120,120,0,0,0,0,0,0,0,0,0,0,0,0,120,120,120
+OwnVertices=true
+Picture=0,0,0,0
+OCF=585
+Contained=2
+GfxOverlay=11,Icon_Number::1,3,,0,0,(0.4,0,8,0,0.4,14,1),16777215,0;12,Icon_Number::5,3,,0,0,(0.4,0,22,0,0.4,14,1),16777215,0
+
+[Script]
+Scenario=false;"Prototype"=DScenario.Prototype
+Values=a(12;i423,i0,i906,i0,i0,i1000,i0,i0,i-906,i0,i423,i0),a(12;i914,i0,i407,i0,i0,i1000,i0,i0,i-407,i0,i914,i0),p(false;"LoadTime"=i30,"AnimationShoot"=n,"WalkSpeed"=i84,"ShootTime"=i20,"AnimationLoad"=s"BowLoadArms","LoadTime2"=i7,"WalkBack"=i56,"AnimationReplacements"=E5,"TurnType"=i1,"AnimationAim"=s"BowAimArms","AimMode"=i1),p(false;"LoadTime"=i30,"AnimationShoot"=n,"WalkSpeed"=i84,"ShootTime"=i20,"AnimationLoad"=s"BowLoadArms","LoadTime2"=i7,"WalkBack"=i56,"AnimationReplacements"=E6,"TurnType"=i1,"AnimationAim"=s"BowAimArms","AimMode"=i1),a(5;E7,E8,E9,E10,E11),a(5;E12,E13,E14,E15,E16),a(2;s"Walk",s"BowWalk"),a(2;s"Walk_Position",i20),a(2;s"Stand",s"BowStand"),a(2;s"Jump",s"BowJump"),a(2;s"KneelDown",s"BowKneel"),a(2;s"Walk",s"BowWalk"),a(2;s"Walk_Position",i20),a(2;s"Stand",s"BowStand"),a(2;s"Jump",s"BowJump"),a(2;s"KneelDown",s"BowKneel"),
