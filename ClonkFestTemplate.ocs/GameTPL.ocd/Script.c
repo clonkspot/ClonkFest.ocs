@@ -63,7 +63,7 @@ func OnGameFinished()
 // Max energy of Clonks
 //func GetGameClonkMaxEnergy() { return 10; }
 
-// Set this to number of frames if the game should end automatically after a set time
+// Set this to number of seconds if the game should end automatically after a set time
 //func GetGameTimeLimit() { return nil; }
 
 // Seconds to wait btween InitGame and StartGame

@@ -50,7 +50,7 @@ func GetGameClonkMaxEnergy() { return 10; }
 // Seconds to wait btween InitGame and StartGame
 func GetGameStartupTime() { return 3; }
 
-// Set this to number of frames if the game should end automatically after a set time
+// Set this to number of seconds if the game should end automatically after a set time
 func GetGameTimeLimit() { return nil; }
 
 // Return true if game should end automatically if only one player is left alive
@@ -146,7 +146,7 @@ func InitGameBase()
 		GameStartCountdown();
 	}
 	else
-		StartGame(players);
+		StartGameBase(players);
 	return true;
 }
 
@@ -163,9 +163,22 @@ func GameStartCountdown()
 		Sound("BalloonPop", true);
 		CustomMessage("<c ff00>$MsgGo$</c>");
 		RemoveTimer("GameStartCountdown");
-		StartGame(GetGamePlayers());
+		StartGameBase(GetGamePlayers());
 	}
 	return true;
+}
+
+func StartGameBase(array players)
+{
+	// Countdown timer
+	var max_time = GetGameTimeLimit();
+	if (max_time)
+	{
+		var HUDTimer = CreateObject(GUI_Timer, 0, 0, NO_OWNER);
+		HUDTimer->SetPosition((-64-16)*2-32-GUI_Timer->GetDefHeight()/2,8+GUI_Timer->GetDefHeight()/2);
+		HUDTimer->SetTime(max_time, this);
+	}
+	return StartGame(players);
 }
 
 func InitializePlayer(int plr)
@@ -232,6 +245,12 @@ func FinishGame()
 	// schedule in global context so it's save to do LoadScenarioSection
 	Schedule(nil, Format("GameCall(\"OnGameFinished\", %s)", game_winners_s), Max(finish_delay,1));
 	return true;
+}
+
+func OnTimeUp()
+{
+	// Timer is up - default action is to finish game
+	return FinishGame();
 }
 
 /* Helper functions */

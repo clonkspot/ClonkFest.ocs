@@ -5,6 +5,8 @@
 	The protoganist of another game. Witty and nimble if skillfully controlled ;-)
 */
 
+#include Library_HUDAdapter
+
 // Last position during Draw action.
 // Used to draw tail
 local last_x, last_y;
@@ -13,6 +15,7 @@ local last_x, last_y;
 func Initialize()
 {
 	MakeInvincible();
+	return _inherited(...);
 }
 
 // Callback at game initialization: Show launch direction and wait

@@ -10,11 +10,11 @@
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "ClickMe"; }
 func GetGameClonkType() { return ClickMe_Clonk; }
-func GetGameTimeLimit() { return 7000; }
+func GetGameTimeLimit() { return 150; }
 func GetGameMinPlayers() { return 1; }
 func GetGameMaxZoomRange() { return {x=LandscapeWidth(), y=LandscapeHeight()}; }
 func GetGameViewLock() { return false; }
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2, y=LandscapeHeight()/2}; }
+func GetGameStartPos(int player) { return {x=LandscapeWidth()/2-100, y=LandscapeHeight()/2}; }
 
 local num_remaining;
 
