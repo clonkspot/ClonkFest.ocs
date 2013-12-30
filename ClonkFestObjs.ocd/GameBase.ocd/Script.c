@@ -170,10 +170,10 @@ func LaunchPlayerClonk(int plr)
 	var clonk_type = GetGameClonkType(), clonk;
 	if (clonk_type)
 	{
-		clonk_type = {Prototype = clonk_type, MaxContentsCount = this.GetGameClonkMaxContents };
 		clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
 		if (clonk)
 		{
+			clonk.MaxContentsCount = this.GetGameClonkMaxContents;
 			clonk->MakeCrewMember(plr);
 			clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
 			clonk->DoEnergy(clonk.MaxEnergy/1000);
@@ -421,6 +421,7 @@ func FocusWinners(array winners)
 			crew->SetCategory(1);
 			crew->SetObjectLayer(crew);
 			crew->SetCrewEnabled(false);
+			crew->~CloseMenu();
 		}
 	}
 	return true;
