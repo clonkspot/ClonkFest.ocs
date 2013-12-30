@@ -6,6 +6,7 @@
 //#include Library_Goal - lieber nur ein Spielziel
 
 local games;
+local next_game; // set if a specific game is called next
 local score;
 local score_to_win;
 local fest_winners;
@@ -97,17 +98,35 @@ global func ClonkFest_NextGame(object clonk_fest)
 func NextGame()
 {
 	// Determine next game
-	//Log("NextGame games: %v, %v", this, games);
-	if (!open_games || !GetLength(open_games)) open_games = games[:];
-	var n_open = GetLength(open_games);
-	var idx = Random(n_open);
-	var game_id = open_games[idx];
-	--n_open;
-	if (idx < n_open) open_games[idx] = open_games[n_open];
-	SetLength(open_games, n_open);
+	var game_id;
+	// Was there a wish?
+	if (next_game)
+	{
+		game_id = next_game;
+		next_game = nil;
+	}
+	else
+	{
+		// Otherwise, pick at random
+		if (!open_games || !GetLength(open_games)) open_games = games[:];
+		var n_open = GetLength(open_games);
+		var idx = Random(n_open);
+		game_id = open_games[idx];
+		--n_open;
+		if (idx < n_open) open_games[idx] = open_games[n_open];
+		SetLength(open_games, n_open);
+	}
 	// Start it!
 	var game = CreateObject(game_id);
 	game->InitGameBase();
+}
+
+func SetNextGame(new_next_game, by_player)
+{
+	Log("%s sets next game to %s!", GetTaggedPlayerName(by_player), new_next_game->GetName());
+	Sound("Ding", true);
+	next_game = new_next_game;
+	return true;
 }
 
 

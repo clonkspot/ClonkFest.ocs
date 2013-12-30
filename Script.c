@@ -10,6 +10,7 @@ static g_clonk_fest;
 func Initialize()
 {
 	InitLobby();
+	AddMsgBoardCmd("next", "g_clonk_fest->SetNextGame(Game_%s, %player%)");
 	return true;
 }
 
