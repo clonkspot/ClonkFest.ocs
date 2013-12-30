@@ -14,6 +14,7 @@ func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Deathmatch"; }
 func GetGameClonkMaxEnergy() { return 5; }
 func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-101)+50, y=LandscapeHeight()/2}; }
+func GetGameClonkMaxContents() { return 2; }
 
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive
 

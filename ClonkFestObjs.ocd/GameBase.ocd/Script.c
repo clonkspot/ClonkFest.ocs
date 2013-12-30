@@ -34,7 +34,7 @@ func GetGameMaxPlayers() { return nil; }
 func GetGameSection() { return "TODO"; }
 
 // Max player zoom range. Set as value and max value at start of game
-func GetGameMaxZoomRange() { return {x=LandscapeWidth()/2, y=LandscapeHeight()/2}; }
+func GetGameMaxZoomRange() { return {x=LandscapeWidth(), y=LandscapeHeight()}; }
 
 // Player Clonk start position. Called once for each player. Called again for ghosts if there is no crew object left
 func GetGameStartPos(int player) { return {x=LandscapeWidth()/2+Random(101)-50, y=LandscapeHeight()/2}; }
@@ -151,10 +151,10 @@ func LaunchPlayerClonk(int plr)
 	var clonk_type = GetGameClonkType(), clonk;
 	if (clonk_type)
 	{
+		clonk_type = {Prototype = clonk_type, MaxContentsCount = this.GetGameClonkMaxContents };
 		clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
 		if (clonk)
 		{
-			clonk.MaxContentsCount = this.GetGameClonkMaxContents;
 			clonk->MakeCrewMember(plr);
 			clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
 			clonk->DoEnergy(clonk.MaxEnergy/1000);
@@ -316,11 +316,14 @@ func GetShortDescription(int plr) { return Name; }
 
 local GhostClonk;
 
+func Ghost_MaxContentsCount() { return 0; }
+
 func Definition()
 {
 	GhostClonk = { Prototype = Clonk,
 		IsGhost = this.IsGame,
 		Initialize = this.Ghost_Initialize,
+		MaxContentsCount = this.Ghost_MaxContentsCount,
 		ContactIncinerate = 0,
 		HasFeelings = true, // Ghosts have feelings, too!
 		Visibility = VIS_Owner | VIS_God,
