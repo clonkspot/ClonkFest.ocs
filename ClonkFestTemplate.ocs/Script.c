@@ -25,14 +25,20 @@ func InitializePlayer(int plr)
 func InitFest()
 {
 	// Let the fest begin! With a random game...
-	RemoveAll(Find_And());
+	var iplr=GetPlayerCount(C4PT_User);
+	while (iplr--)
+	{
+		var plr = GetPlayerByIndex(iplr, C4PT_User);
+		var crew = GetCrew(plr);
+		if (crew) crew->RemoveObject();
+	}
 	var fest = CreateObject(Goal_ClonkFest);
 	fest->InitFest();
 	var game_id = fest->GetRandomGame();
 	if (!game_id) FatalError("No game found! Did you screw up the template?");
 	var game = CreateObject(game_id);
 	if (!game) FatalError("Game could not be created! Did you screw up the template?");
-	game->StartGame();
+	game->InitGameBase();
 }
 
 func OnGameFinished(array winners)

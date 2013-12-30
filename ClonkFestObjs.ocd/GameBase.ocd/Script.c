@@ -18,6 +18,7 @@
 static g_game; // Singleton variable set to instance of this
 
 local startup_wait_time; // countdown
+local game_timer; // pointer to GUI_Timer object
 
 /* To be overloaded by games */
 
@@ -109,7 +110,6 @@ func InitGameBase()
 	// Init players
 	EnableAllControls();
 	var players = GetGamePlayers();
-	var clonk_type = GetGameClonkType();
 	for (var plr in players)
 	{
 		// Viewport settings
@@ -120,18 +120,7 @@ func InitGameBase()
 		// Properties
 		SetWealth(plr, 0);
 		// Initial Clonk init
-		if (clonk_type)
-		{
-			var pos = GetGameStartPos(plr);
-			var clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
-			if (clonk)
-			{
-				clonk->MakeCrewMember(plr);
-				clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
-				clonk->DoEnergy(clonk.MaxEnergy/1000);
-				SetCursor(plr, clonk);
-			}
-		}
+		LaunchPlayerClonk(plr);
 	}
 	// Info message
 	NotifyHUD();
@@ -148,6 +137,25 @@ func InitGameBase()
 	else
 		StartGameBase(players);
 	return true;
+}
+
+func LaunchPlayerClonk(int plr)
+{
+	// Create startup Clonk at game-defined position
+	var pos = GetGameStartPos(plr);
+	var clonk_type = GetGameClonkType(), clonk;
+	if (clonk_type)
+	{
+		clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
+		if (clonk)
+		{
+			clonk->MakeCrewMember(plr);
+			clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
+			clonk->DoEnergy(clonk.MaxEnergy/1000);
+			SetCursor(plr, clonk);
+		}
+	}
+	return clonk;
 }
 
 func GameStartCountdown()
@@ -174,9 +182,9 @@ func StartGameBase(array players)
 	var max_time = GetGameTimeLimit();
 	if (max_time)
 	{
-		var HUDTimer = CreateObject(GUI_Timer, 0, 0, NO_OWNER);
-		HUDTimer->SetPosition((-64-16)*2-32-GUI_Timer->GetDefHeight()/2,8+GUI_Timer->GetDefHeight()/2);
-		HUDTimer->SetTime(max_time, this);
+		game_timer = CreateObject(GUI_Timer, 0, 0, NO_OWNER);
+		game_timer->SetPosition((-64-16)*2-32-GUI_Timer->GetDefHeight()/2,8+GUI_Timer->GetDefHeight()/2);
+		game_timer->SetTime(max_time, this);
 	}
 	return StartGame(players);
 }
@@ -225,6 +233,8 @@ func FinishGame()
 	// Finish only once
 	if (game_finished) return;
 	game_finished = true;
+	// Clear timer (so it doesn't run out during end sequence)
+	if (game_timer) game_timer->RemoveObject();
 	// Internal evaluation; determine winner(s)
 	var finish_delay = OnGameFinished();
 	// Callback to scenario!
