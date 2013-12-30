@@ -48,6 +48,9 @@ func GetGameClonkType() { return Clonk; }
 // Max energy of Clonks
 func GetGameClonkMaxEnergy() { return 10; }
 
+// Max contents count of Clonks
+func GetGameClonkMaxContents() { return 2; }
+
 // Seconds to wait btween InitGame and StartGame
 func GetGameStartupTime() { return 3; }
 
@@ -103,6 +106,8 @@ func InitGameBase()
 	ResetGamma(3);
 	SetSkyAdjust(0xffffffff); SetMatAdjust(0xffffffff);
 	SetGravity(20);
+	SetClimate(100);
+	SetTemperature(100);
 	// Default time object
 	//var time = CreateObject(Environment_Time);
 	//time->SetTime(60*20);
@@ -149,6 +154,7 @@ func LaunchPlayerClonk(int plr)
 		clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
 		if (clonk)
 		{
+			clonk.MaxContentsCount = this.GetGameClonkMaxContents;
 			clonk->MakeCrewMember(plr);
 			clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
 			clonk->DoEnergy(clonk.MaxEnergy/1000);

@@ -9,16 +9,14 @@
 
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "ClickMe"; }
-func GetGameClonkType() { return ClickMe_Clonk; }
 func GetGameTimeLimit() { return 150; }
 func GetGameMinPlayers() { return 1; }
 func GetGameMaxZoomRange() { return {x=LandscapeWidth(), y=LandscapeHeight()}; }
 func GetGameViewLock() { return false; }
 func GetGameStartPos(int player) { return {x=LandscapeWidth()/2-100, y=LandscapeHeight()/2}; }
+func GetGameClonkMaxContents() { return 1; }
 
 local num_remaining;
-
-static ClickMe_Clonk;
 
 func InitGame(array players)
 {
@@ -73,9 +71,7 @@ func OnGameFinished()
 	return 1;
 }
 
-func InitFest() { ClickMe_Clonk = { Prototype = Clonk, MaxContentsCount = this.CrewMaxContentsCount }; return true;}
-
-func CrewMaxContentsCount() { return 0; }
+func InitFest() { return true;}
 
 local Name = "$Name$";
 local Description = "$Description$";

@@ -351,7 +351,7 @@ func InitializeObjects()
 	var Clonk2367 = CreateObject(Clonk, 368, 343);
 	Clonk2367->SetDir(DIR_Right);
 	Clonk2367->SetColor(0xff);
-	var Clonk2629 = CreateObject(Clonk, 935, 149);
+	var Clonk2629 = CreateObject(Clonk, 935, 139);
 	Clonk2629->SetDir(DIR_Right);
 	Clonk2629->SetColor(0xff0000);
 

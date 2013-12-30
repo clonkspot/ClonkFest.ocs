@@ -16,6 +16,7 @@ func GetGameMaxPlayers() { return nil; }
 func GetGameSection() { return "Molay"; }
 func GetGameStartPos(int player) { return [{x=30,y=87},{x=97,y=87},{x=166,y=74},{x=257,y=79}][Random(4)]; }
 func IsGameLastManStanding() { return true; }
+func GetGameClonkMaxContents() { return 0; }
 
 local effect_time, spark_time, borders;
 

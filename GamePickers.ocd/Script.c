@@ -9,6 +9,7 @@
 
 func GetGameAuthor() { return "Pyrit"; }
 func GetGameSection() { return "Pickers"; }
+func GetGameClonkMaxContents() { return 0; }
 
 func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-61)+30, y=188}; }
 
