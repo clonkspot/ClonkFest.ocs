@@ -47,6 +47,11 @@ func InitGame(array players)
 	return;
 }
 
+func StartGame(array players)
+{
+	return true;
+}
+
 func Sproutberry_Entrance(lorry)
 {
 	if (g_game) g_game->~OnSproutberryCollection(this, lorry);

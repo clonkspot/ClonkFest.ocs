@@ -46,12 +46,6 @@ func InitGame(array players)
 			}
 		}
 	}
-	DisableAllControls(true);
-	return true;
-}
-
-func StartGame(array players)
-{
-	EnableAllControls(true);
-	return true;
+	// Player deactivation
+	return inherited(players);
 }

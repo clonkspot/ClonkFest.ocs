@@ -60,21 +60,37 @@ func GetGameTimeLimit() { return nil; }
 // Return true if game should end automatically if only one player is left alive
 func IsGameLastManStanding() { return false; }
 
+// If the goal is to reach a target, object, return this object here
+func GetGameRaceTarget() { return nil; }
+
 // Callback function to be overloaded for custom game initialization
 // This is called after section load and all generic game initialization (Clonk placement, player properties set, etc.)
 // players is an array of player numbers of players that participate. Do not assume that all players take part.
 // Game should be initialized in a paused state if GetGameStartupTime() is used
-func InitGame(array players) { return true; }
+func InitGame(array players) { DisableAllControls(true); return true; }
 
 // To be overloaded after GetGameStartupTime() has passed.
-func StartGame(array players) { return true; }
+func StartGame(array players) { EnableAllControls(true); return true; }
 
 // Callback function when game is finished
 // Call stuff like SetGameWinners() here.
 func OnGameFinished()
 {
-	// By default, all players that aren't ghosts win the game
-	SetGameWinners(GetLivingGamePlayers());
+	// In a race, winneres are at the goal
+	var race_target = GetGameRaceTarget();
+	if (race_target)
+	{
+		var winners = [];
+		for (var obj in FindPlayersAtGoal(race_target))
+			if (GetIndexOf(winners, obj->GetOwner()) < 0)
+				winners[GetLength(winners)] = obj->GetOwner();
+		SetGameWinners(winners);
+	}
+	else
+	{
+		// By default, all players that aren't ghosts win the game
+		SetGameWinners(GetLivingGamePlayers());
+	}
 	return true;
 }
 
@@ -127,6 +143,9 @@ func InitGameBase()
 		// Initial Clonk init
 		LaunchPlayerClonk(plr);
 	}
+	// Race init?
+	var race_target = GetGameRaceTarget();
+	if (race_target) RemoveEffect("FlagAutoPickup", race_target); // if target is a CTF flag object, it would have an unneeded timer on it
 	// Info message
 	NotifyHUD();
 	ShowEntryMsg(NO_OWNER);
@@ -184,6 +203,8 @@ func GameStartCountdown()
 
 func StartGameBase(array players)
 {
+	// Race target?
+	if (GetGameRaceTarget()) AddTimer(this.RaceGoalCheck, 5);
 	// Countdown timer
 	var max_time = GetGameTimeLimit();
 	if (max_time)
@@ -207,11 +228,27 @@ func RelaunchPlayer(int plr)
 	//Log("Relaunch %d", plr);
 	// Ignore during section loading
 	if (g_loading_section) return;
+	// In a race, there is relaunch by default
+	if (GetGameRaceTarget()) return LaunchPlayerClonk(plr);
 	// Default player elimination: Relaunch as ghost
 	GhostPlayer(plr);
 	// If this is last man standing, check game end condition
 	if (IsGameLastManStanding() && GetLength(GetLivingGamePlayers())<=1) FinishGame();
 	return true;
+}
+
+func RaceGoalCheck()
+{
+	// Game ends when a player reaches the goal
+	if (GetLength(FindPlayersAtGoal(GetGameRaceTarget()))) FinishGame();
+	return true;
+}
+
+func FindPlayersAtGoal(object goal)
+{
+	if (!goal) return [];
+	var wdt = goal->GetDefWidth(), hgt = goal->GetDefHeight();
+	return goal->FindObjects(Find_AtRect(-wdt/2,-hgt/2,wdt,hgt), Find_OCF(OCF_Alive), Find_Not(Find_Owner(NO_OWNER)), Find_Not(Find_Func("IsGhost")));
 }
 
 
