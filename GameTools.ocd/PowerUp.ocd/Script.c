@@ -21,11 +21,6 @@ func ReturnDamage()
 	return(0);
 }
 
-func ReturnValue()
-{
-	return(250);
-}
-
 public func OnProjectileHit(object shot)
 {
 	if (shot->GetID()==Arrow)
@@ -34,13 +29,6 @@ public func OnProjectileHit(object shot)
 	CreateParticle("MagicSpark", 0,0, PV_Random(-30,30), PV_Random(-30,30), PV_Random(10,50), Particles_Spark(), 30);
 	Sound("BalloonPop", false, 1);
 	var shooter = shot -> GetController();
-	DoWealth(shooter, ReturnValue());
-	var msg = CreateObject(FloatingMessage);
-	msg->SetMessage(Format("1UP!!!|+%d</c>!", ReturnValue()));
-	var rgba = SplitRGBaValue(GetPlayerColor(shooter));
-	msg->SetColor(rgba[0], rgba[1], rgba[2], rgba[3]);
-	msg->FadeOut(1, 10);
-	msg->SetSpeed(0, -5);
 	FindSpot();
 	RemoveObject();
 	}

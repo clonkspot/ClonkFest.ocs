@@ -61,4 +61,4 @@ local ActMap = {
 		NextAction = "Float",
 	},
 };
-local Name = "MovingBrick";
+local Name = "EarthBrick";

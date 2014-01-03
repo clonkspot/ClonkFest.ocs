@@ -155,6 +155,8 @@ func InitGameBase()
 	// Info message
 	NotifyHUD();
 	ShowEntryMsg(NO_OWNER);
+	// Scoreboard init
+	if (IsGameLastManStanding()) Scoreboard->Init([{key = "game", title = "", sorted = true, desc = true, default = "", priority = 100}]);
 	// Custom game init
 	InitGame(players);
 	// Schedule game start
@@ -239,7 +241,11 @@ func RelaunchPlayer(int plr)
 	// Default player elimination: Relaunch as ghost
 	GhostPlayer(plr);
 	// If this is last man standing, check game end condition
-	if (IsGameLastManStanding() && GetLength(GetLivingGamePlayers())<=1) FinishGame();
+	if (IsGameLastManStanding())
+	{
+		Scoreboard->SetPlayerData(plr, "game", "{{Clonk_Grave}}", -1);
+		if(GetLength(GetLivingGamePlayers())<=1) FinishGame();
+	}
 	return true;
 }
 

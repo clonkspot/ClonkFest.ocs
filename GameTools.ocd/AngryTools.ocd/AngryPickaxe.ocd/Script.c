@@ -24,8 +24,3 @@ func ReturnDamage()
 {
 	return(180);
 }
-
-func ReturnValue()
-{
-	return(50);
-}

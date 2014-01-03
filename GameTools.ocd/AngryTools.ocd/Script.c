@@ -14,6 +14,16 @@ local ActMap = {
 			Hgt = 54,
 			NextAction = "Float",
 	},
+	GotHit = {
+			Prototype = Action,
+			Name = "GotHit",
+			Procedure = nil,
+			Directions = 2,
+			Speed = 1000,
+			Wdt = 64,
+			Hgt = 54,
+			NextAction = "GotHit",
+	},
 	None = {
 			Prototype = Action,
 			Name = "None",
@@ -72,36 +82,26 @@ func Collide()
 	SetCategory(C4D_Vehicle);
 	SetAction("None");
 	SetYDir(-speed*2, 1000);
-	SetXDir(500*LeftOrRight(),1000);
+	SetXDir(500*(Random(2)*2-1),1000);
 	while(RemoveVertex());
+	return true;
 }
 
 public func OnProjectileHit(object shot)
 {
-	if (shot->GetID()==Arrow)
+	if (shot && shot->GetID()==Arrow)
 	{
-	CreateParticle("Blast", 0,0, 0,0, 150);
-	Sound("BalloonPop", false, 1);
-	var shooter = shot -> GetController();
-	DoWealth(shooter, ReturnValue());
-	var msg = CreateObject(FloatingMessage);
-	msg->SetMessage(Format("+%d</c>", ReturnValue()));
-	var rgba = SplitRGBaValue(GetPlayerColor(shooter));
-	msg->SetColor(rgba[0], rgba[1], rgba[2], rgba[3]);
-	msg->FadeOut(1, 20);
-	msg->SetSpeed(0, -10);
-	if (shot) shot->RemoveObject();
-	RemoveObject();
+		var xdir = shot->GetXDir()/3, ydir = shot->GetYDir();
+		var this_speed = GetYDir();
+		shot->CreateParticle("WoodChip", 0,0, PV_Random(xdir-5,xdir+5), PV_Random(ydir-5,ydir+5), PV_Random(10,50), Particles_Spark(), 5);
+		Sound("BalloonPop", false, 1);
+		shot->RemoveObject();
+		// Turn to hit mode
+		this.rotationArray = [1,0,0];
+		SetCategory(C4D_Vehicle);
+		SetAction("GotHit");
+		SetYDir(-this_speed*2);
+		SetXDir(xdir);
 	}
+	return true;
 }
-
-func LeftOrRight()
-{
-	if(Random(2)) return 2; else return -1;
-}
-
-func ReturnValue()
-{
-	return 10;
-}
-

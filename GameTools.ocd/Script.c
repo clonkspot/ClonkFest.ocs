@@ -77,7 +77,6 @@ func InitGame(array players)
 		if(Random(2)) grass.Plane=1;
 	}
 	
-	DisableAllControls(true);
 	return true;
 }
 
@@ -87,7 +86,6 @@ func StartGame(array players)
 	AddTimer(this.CreateTool, 45);
 	// Wrap timer
 	AddTimer(this.Timer1, 1);
-	EnableAllControls(true);
 	return true;
 }
 
@@ -225,19 +223,3 @@ func Bow_ControlUseHolding(object clonk, int x, int y)
 // Clonk can't be hit by arrows
 func Clonk_QueryCatchBlow() { return true; }
 
-//Fire first melts away your wealth, then hurts you.
-func FxToolsBurnDamage(object target, proplist effect, int damage, int cause)
-{
-	if (cause == FX_Call_EngFire && !game_finished)
-	{
-		var plr = target->GetOwner();
-		if (GetPlrWealth(plr)>0)
-		{
-			DoWealth(plr, -10);
-			CustomMessage(Format("<c %x> %d </c> {{GUI_Wealth}}",GetPlayerColor(target->GetOwner()), GetWealth(target->GetOwner())),target, NO_OWNER, 0, 0, );
-			return 0;
-		}
-	}
-	// regular damage
-	return damage;
-}
