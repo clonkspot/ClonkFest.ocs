@@ -12,14 +12,27 @@
 
 static g_ClonkFest_starting;
 
+local is_game_over;
+
+func InitializeMap(map)
+{
+}
+
 func InitializePlayer(int plr)
 {
+	// Scoreboard setup
+	Scoreboard->NewPlayerEntry(plr);
 	// Delayed start of fest
 	if (!g_ClonkFest_starting)
 	{
 		g_ClonkFest_starting = true;
 		Schedule(nil, "GameCall(\"InitFest\")",1,1);
 	}
+}
+
+func RemovePlayer(int plr)
+{
+	if (!is_game_over) Scoreboard->RemovePlayerEntry(plr);
 }
 
 func InitFest()
@@ -44,6 +57,7 @@ func InitFest()
 func OnGameFinished(array winners)
 {
 	Log("Round over.");
+	is_game_over = true;
 	var iplr=GetPlayerCount(C4PT_User);
 	while (iplr--)
 	{

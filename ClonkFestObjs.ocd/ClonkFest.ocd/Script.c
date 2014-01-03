@@ -28,6 +28,26 @@ func Initialize()
 	return _inherited(...);
 }
 
+func InitializePlayer(int plr)
+{
+	if (score)
+	{
+		score[plr] = 0;
+		Scoreboard->NewPlayerEntry(plr);
+		Scoreboard->SetPlayerData(plr, "wins", Format("%d/%d",score[plr], score_to_win));
+	}
+	return _inherited(plr, ...);
+}
+
+func RemovePlayer(int plr)
+{
+	if (score && !fest_winners) // if fest_winners is set, party is over - leave entries there for comparison
+	{
+		Scoreboard->RemovePlayerEntry(plr);
+	}
+	return _inherited(plr, ...);
+}
+
 
 /* Game interface */ 
 

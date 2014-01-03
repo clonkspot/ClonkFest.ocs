@@ -84,12 +84,12 @@ func OnGameFinished()
 		for (var obj in FindPlayersAtGoal(race_target))
 			if (GetIndexOf(winners, obj->GetOwner()) < 0)
 				winners[GetLength(winners)] = obj->GetOwner();
-		SetGameWinners(winners);
+		SetGameWinners(winners, true);
 	}
 	else
 	{
 		// By default, all players that aren't ghosts win the game
-		SetGameWinners(GetLivingGamePlayers());
+		SetGameWinners(GetLivingGamePlayers(), true);
 	}
 	return true;
 }
@@ -110,6 +110,12 @@ func Initialize()
 	// Status
 	this.Visibility = VIS_None;
 	// Goal base init
+	return _inherited(...);
+}
+
+func Destruction()
+{
+	Scoreboard->RemoveColumn("game");
 	return _inherited(...);
 }
 

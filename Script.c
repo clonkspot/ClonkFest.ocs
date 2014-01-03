@@ -14,6 +14,13 @@ func Initialize()
 	return true;
 }
 
+func InitializeMap(map)
+{
+	// forward to game
+	if (g_game) return g_game->~InitializeMap(map);
+	return false;
+}
+
 func InitializePlayer(int plr)
 {
 	PositionPlayerCrew(plr);
