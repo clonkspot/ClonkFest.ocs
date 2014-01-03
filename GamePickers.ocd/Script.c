@@ -28,9 +28,13 @@ func InitGame(array players)
 	//Trees!
 	trees = CreateArray(20);
 	for (var i = 0; i < 20; i++) trees[i] = CreateObject(Tree_Coniferous, i*20+RandomX(-15, 15), 205);
+	// Scoreboard
+	Scoreboard->Init([{key = "game", title = Sproutberry, sorted = true, desc = true, default = "0", priority = 100}]);
 	//"Player Initializion"
 	for(var plr in  players)
 	{
+		Scoreboard->SetPlayerData(plr, "game", 0);
+				
 		var lorry = GetCrew(plr)->CreateObject(Lorry,0,0,plr);
 		GetCrew(plr)->SetCommand("Grab", lorry);
 		UpdateLorryText(lorry);
@@ -90,8 +94,14 @@ func OnSproutberryCollection(object berry, object lorry)
 
 func UpdateLorryText(object lorry)
 {
-	var clr = GetPlayerColor(lorry->GetOwner());
-	lorry->Message(Format("@<c %x><c %x>%d/20</c> {{Sproutberry}}", 0xb4ffffff, (clr&0xffffff)|0xb4000000, lorry->ContentsCount()));
+	var plr = lorry->GetOwner();
+	if (plr != NO_OWNER)
+	{
+		var clr = GetPlayerColor(plr);
+		var score = lorry->ContentsCount();
+		lorry->Message(Format("@<c %x><c %x>%d/%d</c> {{Sproutberry}}", 0xb4ffffff, (clr&0xffffff)|0xb4000000, score, GoalNumBerries));
+		Scoreboard->SetPlayerData(plr, "game", score);
+	}
 	return true;
 }
 
