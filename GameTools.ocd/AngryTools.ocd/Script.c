@@ -76,13 +76,12 @@ func ReturnHeight() //Be advised: height should always be an even number, becaus
 
 func Collide()
 {
-	var speed = GetYDir(1000);
 	this.isTarget = 0;
 	this.rotationArray = [1,0,0];
 	SetCategory(C4D_Vehicle);
 	SetAction("None");
-	SetYDir(-speed*2, 1000);
-	SetXDir(500*(Random(2)*2-1),1000);
+	SetYDir(-26);
+	SetXDir(5*(Random(2)*2-1));
 	while(RemoveVertex());
 	return true;
 }
@@ -92,7 +91,6 @@ public func OnProjectileHit(object shot)
 	if (shot && shot->GetID()==Arrow)
 	{
 		var xdir = shot->GetXDir()/3, ydir = shot->GetYDir();
-		var this_speed = GetYDir();
 		shot->CreateParticle("WoodChip", 0,0, PV_Random(xdir-5,xdir+5), PV_Random(ydir-5,ydir+5), PV_Random(10,50), Particles_Spark(), 5);
 		Sound("BalloonPop", false, 1);
 		shot->RemoveObject();
@@ -100,7 +98,7 @@ public func OnProjectileHit(object shot)
 		this.rotationArray = [1,0,0];
 		SetCategory(C4D_Vehicle);
 		SetAction("GotHit");
-		SetYDir(-this_speed*2);
+		SetYDir(-26);
 		SetXDir(xdir);
 	}
 	return true;

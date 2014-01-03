@@ -52,7 +52,7 @@ func GetGameClonkMaxEnergy() { return 10; }
 func GetGameClonkMaxContents() { return 2; }
 
 // Seconds to wait btween InitGame and StartGame
-func GetGameStartupTime() { return 3; }
+func GetGameStartupTime() { return 6; }
 
 // Set this to number of seconds if the game should end automatically after a set time
 func GetGameTimeLimit() { return nil; }
