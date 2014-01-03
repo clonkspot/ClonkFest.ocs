@@ -24,12 +24,18 @@ local clonk;
 func Entrance(object new_container)
 {
 	if (!clonk) clonk = new_container;
-	else Enter(clonk);
+	else ScheduleCall(this, "EnsureContainer", 1,1);
 }
 
 func Departure()
 {
-	if (clonk) Enter(clonk);
+	if (clonk) ScheduleCall(this, "EnsureContainer", 1,1);
+}
+
+func EnsureContainer()
+{
+	if (clonk && Contained() != clonk) Enter(clonk);
+	return true;
 }
 
 

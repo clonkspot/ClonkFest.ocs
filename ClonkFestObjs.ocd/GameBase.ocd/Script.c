@@ -144,6 +144,7 @@ func InitGameBase()
 		SetPlayerZoomByViewRange(plr, zoom_range.x, zoom_range.y, PLRZOOM_LimitMax|PLRZOOM_Direct);	
 		SetPlayerZoomByViewRange(plr, 120, 90, PLRZOOM_LimitMin);
 		SetPlayerViewLock(plr, GetGameViewLock());
+		SetFoW(false, plr);
 		// Properties
 		SetWealth(plr, 0);
 		// Initial Clonk init

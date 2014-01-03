@@ -43,12 +43,12 @@ func InitGame(array players)
 	}
 	Schedule(this, "Frame1()", 1, 0);
 	Schedule(this, "Frame15()", 15, 3);
-	AddTimer(this.MakeBerry, 6);
 	return;
 }
 
 func StartGame(array players)
 {
+	AddTimer(this.MakeBerry, 6);
 	return true;
 }
 
