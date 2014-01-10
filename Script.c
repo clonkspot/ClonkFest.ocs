@@ -69,6 +69,7 @@ func InitLobby()
 {
 	SetTemperature(100);
 	SetClimate(100);
+	SetPlayerViewLock(NO_OWNER, false);
 	DisableAllControls();
 	return true;
 }
