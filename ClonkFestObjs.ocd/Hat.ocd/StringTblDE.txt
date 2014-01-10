@@ -1,0 +1,2 @@
+Name=Hut
+Description=Wichtiger Partyhut.
