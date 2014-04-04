@@ -1,0 +1,2 @@
+Name=Schatzsuche
+Description=Finde den Schatz in einer der Truhen!

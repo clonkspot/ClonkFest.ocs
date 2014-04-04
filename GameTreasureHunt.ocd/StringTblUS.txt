@@ -1,0 +1,2 @@
+Name=Treasure hunt
+Description=Find the treasure in one of the chests!

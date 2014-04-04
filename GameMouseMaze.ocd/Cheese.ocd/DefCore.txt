@@ -1,0 +1,14 @@
+[DefCore]
+id=Cheese
+Version=5,2,0,1
+Category=C4D_StaticBack
+Width=16
+Height=16
+Offset=-8,-8
+Vertices=1
+Mass=16
+Picture=0,0,64,64
+Components=Nugget=3
+Rotate=1
+Oversize=1
+StretchGrowth=1

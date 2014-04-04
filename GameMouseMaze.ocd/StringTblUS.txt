@@ -1,0 +1,2 @@
+Name=Mouse maze
+Description=Use your mouse to guide the mouse through the labyrinth!

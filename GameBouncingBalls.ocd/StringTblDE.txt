@@ -1,0 +1,2 @@
+Name=Prellball
+Description=Lenke den Ball mit der Maus und weiche den Feuersteinen aus!

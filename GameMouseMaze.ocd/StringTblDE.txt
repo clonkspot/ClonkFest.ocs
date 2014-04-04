@@ -1,0 +1,2 @@
+Name=Mauslabyrinth
+Description=Führe die Maus mit selbiger durch das Labyrinth!

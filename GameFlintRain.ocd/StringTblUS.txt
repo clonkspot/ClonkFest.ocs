@@ -1,0 +1,2 @@
+Name=Flint rain
+Description=It's raining firestones!

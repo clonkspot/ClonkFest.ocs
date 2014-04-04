@@ -1,0 +1,2 @@
+Name=Elevator
+Description=Avoid the abyss!

@@ -1,0 +1,4 @@
+[Landscape]
+MapZoom=10,0,5,15
+TopOpen=1
+BottomOpen=1
