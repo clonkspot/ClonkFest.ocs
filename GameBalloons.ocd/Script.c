@@ -9,7 +9,7 @@
 
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Balloons"; }
-func GetGameStartPos(int player) { return {x=20+Random(150), y=207}; }
+func GetGameStartPos(int player) { return {x=20+Random(150), y=207-10}; }
 func GetGameClonkMaxContents() { return 0; }
 func GetGameTimeLimit() { return 300; }
 
@@ -27,7 +27,7 @@ func InitGame(array players)
 		var crew = GetCrew(plr);
 		if (crew)
 		{
-			var catapult = crew->CreateObject(Catapult, 0, 10, plr);
+			var catapult = crew->CreateObjectAbove(Catapult, 0, 10, plr);
 			if (catapult)
 			{
 				catapult->SetObjectLayer(crew);
@@ -88,7 +88,7 @@ func Firestone_Hit()
 
 func BalloonTimer()
 {
-	var balloon = CreateObject(Balloon, 410+Random(160), LandscapeHeight()-1);
+	var balloon = CreateObjectAbove(Balloon, 410+Random(160), LandscapeHeight()-1);
 	if (balloon)
 	{
 		var size = 25 + Random(75);
@@ -127,7 +127,7 @@ func OnBalloonPopped(int score, int plr)
 	var crew = GetCrew(plr);
 	if (crew)
 	{
-		var fm = CreateObject(FloatingMessage, crew->GetX() - GetX(), crew->GetY() - GetY(), NO_OWNER);
+		var fm = CreateObjectAbove(FloatingMessage, crew->GetX() - GetX(), crew->GetY() - GetY(), NO_OWNER);
 		if (fm)
 		{
 			var plr_clr = GetPlayerColor(plr);

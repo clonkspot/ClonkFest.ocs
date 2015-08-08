@@ -70,7 +70,7 @@ func CreateBrick(int X)
 	{
 		brickX += 20;	
 	}
-	var newBrick = CreateObject(EarthBrick, -GetX()+brickX, -GetY()+HorizonHeight);
+	var newBrick = CreateObjectAbove(EarthBrick, -GetX()+brickX, -GetY()+HorizonHeight);
 	var particles =
 	{
 		Prototype = Particles_Air(),

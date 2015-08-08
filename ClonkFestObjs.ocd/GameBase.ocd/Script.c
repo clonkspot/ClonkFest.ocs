@@ -179,7 +179,7 @@ func LaunchPlayerClonk(int plr)
 	var clonk_type = GetGameClonkType(), clonk;
 	if (clonk_type)
 	{
-		clonk = CreateObject(clonk_type, pos.x,pos.y, plr);
+		clonk = CreateObjectAbove(clonk_type, pos.x,pos.y, plr);
 		if (clonk)
 		{
 			clonk.MaxContentsCount = this.GetGameClonkMaxContents;
@@ -402,7 +402,7 @@ func GhostPlayer(int plr)
 	// Make sure player has no regular Clonks left
 	for (var i = GetCrewCount(plr); i>=0; --i) if (last_crew=GetCrew(plr, i)) if (last_crew->GetAlive()) last_crew->Kill();
 	// Create ghost!
-	var ghost = CreateObject(GhostClonk, ghost_pos.x, ghost_pos.y, plr);
+	var ghost = CreateObjectAbove(GhostClonk, ghost_pos.x, ghost_pos.y, plr);
 	if (ghost)
 	{
 		ghost->MakeCrewMember(plr);

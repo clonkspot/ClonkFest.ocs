@@ -24,10 +24,10 @@ func InitGame(array players)
 	DigFreeRect(0, 195, LandscapeWidth(), 6);
 	//Grass!
 	for (var i = 0; i < 100; i++)
-		CreateObject(Grass, i*5+RandomX(-5,5), 200+RandomX(-1,1)).Plane=RandomX(1, 499);
+		CreateObjectAbove(Grass, i*5+RandomX(-5,5), 200+RandomX(-1,1)).Plane=RandomX(1, 499);
 	//Trees!
 	trees = CreateArray(20);
-	for (var i = 0; i < 20; i++) trees[i] = CreateObject(Tree_Coniferous, i*20+RandomX(-15, 15), 205);
+	for (var i = 0; i < 20; i++) trees[i] = CreateObjectAbove(Tree_Coniferous, i*20+RandomX(-15, 15), 205);
 	// Scoreboard
 	Scoreboard->Init([{key = "game", title = Sproutberry, sorted = true, desc = true, default = "0", priority = 100}]);
 	//"Player Initializion"
@@ -35,12 +35,12 @@ func InitGame(array players)
 	{
 		Scoreboard->SetPlayerData(plr, "game", 0);
 				
-		var lorry = GetCrew(plr)->CreateObject(Lorry,0,0,plr);
+		var lorry = GetCrew(plr)->CreateObjectAbove(Lorry,0,0,plr);
 		GetCrew(plr)->SetCommand("Grab", lorry);
 		UpdateLorryText(lorry);
 		
 		//Make 1 start berry for every player
-		var berry = CreateObject(MySproutberry, RandomX(20, LandscapeWidth()-20), RandomX(150, 170));
+		var berry = CreateObjectAbove(MySproutberry, RandomX(20, LandscapeWidth()-20), RandomX(150, 170));
 		berry.i = 100;
 		berry->SetCon(100);
 		berry->AddTimer("StartWobble", RandomX(50, 100));
@@ -74,7 +74,7 @@ func Frame1()
 			tree.Plane = RandomX (-20,-1);
 		else
 			tree.Plane = RandomX(1, 20);
-		if(!Random(3)) tree -> CreateObject(MySproutberry, RandomX(-30, 30), RandomX(-40, 0));
+		if(!Random(3)) tree -> CreateObjectAbove(MySproutberry, RandomX(-30, 30), RandomX(-40, 0));
 	}
 	DigFreeRect(0, 195, LandscapeWidth(), 6);
 }
@@ -141,9 +141,9 @@ func MakeBerry()
 		if(!Random(3))
 		{
 		if(!Random(2))
-			CreateObject(MySproutberry, tree->GetX()+RandomX(-30, 30), tree->GetY()+RandomX(-30, 0));
+			CreateObjectAbove(MySproutberry, tree->GetX()+RandomX(-30, 30), tree->GetY()+RandomX(-30, 0));
 		else
-			CreateObject(MySproutberry, tree->GetX()+RandomX(-15, 15), tree->GetY()+RandomX(-55, -30));
+			CreateObjectAbove(MySproutberry, tree->GetX()+RandomX(-15, 15), tree->GetY()+RandomX(-55, -30));
 		}
 	}
 }

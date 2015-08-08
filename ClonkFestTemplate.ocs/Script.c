@@ -45,11 +45,11 @@ func InitFest()
 		var crew = GetCrew(plr);
 		if (crew) crew->RemoveObject();
 	}
-	var fest = CreateObject(Goal_ClonkFest);
+	var fest = CreateObjectAbove(Goal_ClonkFest);
 	fest->InitFest();
 	var game_id = fest->GetRandomGame();
 	if (!game_id) FatalError("No game found! Did you screw up the template?");
-	var game = CreateObject(game_id);
+	var game = CreateObjectAbove(game_id);
 	if (!game) FatalError("Game could not be created! Did you screw up the template?");
 	game->InitGameBase();
 }

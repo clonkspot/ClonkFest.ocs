@@ -22,7 +22,7 @@ local effect_time, spark_time, borders;
 
 func InitGame(array players)
 {
-	var brick = CreateObject(MovingBrick, RandomX(10,LandscapeWidth()-10), 308);
+	var brick = CreateObjectAbove(MovingBrick, RandomX(10,LandscapeWidth()-10), 308);
 	brick->MoveHorizontal(10, LandscapeWidth()-10, 15);
 	SetSkyAdjust(RGB(255,128,0));
 	SetMatAdjust(RGB(255,150,128));
@@ -67,7 +67,7 @@ func MakeSpark()
 		x = (LandscapeWidth()-1)*Random(2);
 		y = Random(LandscapeHeight());
 	}
-	var spark = CreateObject(FireRock, x,y);
+	var spark = CreateObjectAbove(FireRock, x,y);
 	var clonks = FindObjects(Find_ID(Clonk), Find_Not(Find_Action("Dead")), Find_Not(Find_Func("IsGhost")));
 	var clonk = clonks[Random(GetLength(clonks))];
 	if (clonk) spark->Launch(clonk->GetX(), clonk->GetY());

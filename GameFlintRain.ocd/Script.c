@@ -51,7 +51,7 @@ func Timer()
 	var n_meteors = Random(2 + time / 100);
 	for (var i=0; i<n_meteors; ++i)
 	{
-		var meteor = CreateObject(Meteor);
+		var meteor = CreateObjectAbove(Meteor);
 		var x = Random(LandscapeWidth());
 		var y = -Random(50);
 		var size = RandomX(60, 90);
@@ -61,7 +61,7 @@ func Timer()
 	}
 	if (!Random(70))
 	{
-		var kit = CreateObject(WallKit, Random(LandscapeWidth()), 0);
+		var kit = CreateObjectAbove(WallKit, Random(LandscapeWidth()), 0);
 		if (kit)
 		{
 			kit->SetXDir(RandomX(-22, 22));

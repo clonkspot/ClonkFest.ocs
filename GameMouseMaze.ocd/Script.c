@@ -30,7 +30,7 @@ func InitGame(array players)
 	// Brick blocks start until game is really started
 	DrawMaterialQuad("Brick-brick1", entry_x*map_zoom+2,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom+map_zoom, entry_x*map_zoom+2,entry_y*map_zoom+map_zoom);
 	// Goal
-	goal_cheese = CreateObject(Cheese, exit_cave_x*map_zoom+map_zoom/2, exit_cave_y*map_zoom + map_zoom/2);
+	goal_cheese = CreateObjectAbove(Cheese, exit_cave_x*map_zoom+map_zoom/2, exit_cave_y*map_zoom + map_zoom/2);
 	return true;
 }
 

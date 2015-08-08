@@ -94,7 +94,7 @@ func LaunchWall(wall_dir)
 func LaunchFireRock(int x, int y, int vx, int vy, int clr)
 {
 	if (!clr) clr = RndColor();
-	var rock = CreateObject(FireRock);
+	var rock = CreateObjectAbove(FireRock);
 	if (rock)
 	{
 		rock.Plane = -1;

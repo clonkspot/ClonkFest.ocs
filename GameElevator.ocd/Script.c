@@ -48,7 +48,7 @@ func Timer()
 	var x = (time%2)*(wdt/2) + Random(wdt/2) + 50;
 	var brick_size = Max(4-Random(1+time/20), 1);
 	var brick_off = (4-brick_size)*5;
-	var brick = CreateObject(MovingBrick, x+brick_off, 8, NO_OWNER);
+	var brick = CreateObjectAbove(MovingBrick, x+brick_off, 8, NO_OWNER);
 	if (brick)
 	{
 		brick->SetSize(brick_size);
@@ -66,7 +66,7 @@ func Timer()
 				item_types = [Firestone, WindBag, Sword, Bow]; // rare
 			var item_type = item_types[Random(Min(1+time/25, 4))];
 			if (item_type == Firestone && brick_size == 1) x+=3; // vertices are weird. they tend to fall off.
-			CreateObject(item_type, x, 0, NO_OWNER);
+			CreateObjectAbove(item_type, x, 0, NO_OWNER);
 		}
 	}
 }

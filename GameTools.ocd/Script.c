@@ -23,7 +23,7 @@ func InitGame(array players)
 {
 	//Make a brick floor
 	for (var i = 0; i < LandscapeWidth(); i+=20)
-	 CreateObject(EarthBrick, i+10, HorizonHeight);
+	 CreateObjectAbove(EarthBrick, i+10, HorizonHeight);
 					
 	//Grass!     
 	PlaceGrass(75);
@@ -34,15 +34,15 @@ func InitGame(array players)
 	
 	//Mushrooms
 	for (var i = 0; i < 15; i++)
-		CreateObject(ColorMushroom, Random(LandscapeWidth()), HorizonHeight-5).Plane = RandomX(399, 500);
+		CreateObjectAbove(ColorMushroom, Random(LandscapeWidth()), HorizonHeight-5).Plane = RandomX(399, 500);
 	
 	//Grass	
 	for (var i = 0; i < 100; i++)
-		CreateObject(Grass, Random(LandscapeWidth()), HorizonHeight-5).Plane = RandomX(399, 500);
+		CreateObjectAbove(Grass, Random(LandscapeWidth()), HorizonHeight-5).Plane = RandomX(399, 500);
 	
 	//Trees!   
 	for (var i = 0; i < 10; i++)
-			CreateObject(Tree_Coniferous, Random(LandscapeWidth()), HorizonHeight-5);
+			CreateObjectAbove(Tree_Coniferous, Random(LandscapeWidth()), HorizonHeight-5);
 
 	//Replacement for InitializePlayer()
 	for(var plr in players)
@@ -52,7 +52,7 @@ func InitGame(array players)
 		{
 			AddEffect("ToolsBurn", crew, 1, 0, this); // Fire damage
 			crew.QueryCatchBlow = this.Clonk_QueryCatchBlow;
-			var bow = CreateObject(Bow,10,1,plr);
+			var bow = CreateObjectAbove(Bow,10,1,plr);
 			bow.ContactIncinerate = 0;
 			bow.ControlUseHolding = this.Bow_ControlUseHolding;
 			var arrow = bow -> CreateContents(Arrow);
@@ -150,14 +150,14 @@ func CreateTool()
 			speed = -speed;
 		}
 		
-		var powerUp = CreateObject(PowerUp, X, RandomX(25, 100));
+		var powerUp = CreateObjectAbove(PowerUp, X, RandomX(25, 100));
 		powerUp-> SetXDir(speed, 8000);
 	}
 	
 	//Creates a lavachunk and flings it up
 	if(!Random(5))
 	{
-		var bomb = CreateObject(LavaChunk, Random(LandscapeWidth()), LandscapeHeight()-1);
+		var bomb = CreateObjectAbove(LavaChunk, Random(LandscapeWidth()), LandscapeHeight()-1);
 		bomb->Fling(RandomX(-3,3), -7);
 	}
 }
@@ -168,11 +168,11 @@ func RandomTool()
 	if(!Random(5))
 	{
 		if(!Random(2))
-			return CreateObject(AngrySword, SearchX(1), 8);
+			return CreateObjectAbove(AngrySword, SearchX(1), 8);
 		else
-			return CreateObject(AngryPickaxe, SearchX(5), 8);
+			return CreateObjectAbove(AngryPickaxe, SearchX(5), 8);
 	}
-	return CreateObject(AngryShovel, SearchX(5), 10);
+	return CreateObjectAbove(AngryShovel, SearchX(5), 10);
 }
 
 func SearchX(likelyhood)	//Likelyhood is the chance, that X is directly above a clonk. 1 is always, e.g. 5 is every 5th time

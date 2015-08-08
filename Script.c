@@ -55,7 +55,7 @@ func LoadLobby(winners)
 	for (var iplr=0; iplr < GetPlayerCount(C4PT_User); ++iplr)
 	{
 		var plr = GetPlayerByIndex(iplr, C4PT_User);
-		var clonk = CreateObject(Clonk, Random(200)+250, 336, plr);
+		var clonk = CreateObjectAbove(Clonk, Random(200)+250, 336, plr);
 		clonk->MakeCrewMember(plr);
 		SetCursor(plr, clonk);
 		var was_winner = false;

@@ -4,6 +4,13 @@ Title=Clonkfest
 Version=5,3,90
 NoInitialize=true
 
+[Definitions]
+Definition1=Objects.ocd
+Definition2=Decoration.ocd
+
+[Game]
+Goals=Goal_Melee=1;
+
 [Player1]
 
 [Player2]
