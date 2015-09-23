@@ -2,7 +2,7 @@
 
 func InitializeObjects()
 {
-	var Environment_Time0002 = CreateObjectAbove(Environment_Time, 0, 0);
+	var Environment_Time0002 = CreateObjectAbove(Time, 0, 0);
 	Environment_Time0002->SetTime(1204);
 	Environment_Time0002->SetCycleSpeed(20);
 
