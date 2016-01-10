@@ -182,7 +182,7 @@ func LaunchPlayerClonk(int plr)
 		clonk = CreateObjectAbove(clonk_type, pos.x,pos.y, plr);
 		if (clonk)
 		{
-			clonk.MaxContentsCount = this.GetGameClonkMaxContents;
+			clonk.MaxContentsCount = this->GetGameClonkMaxContents();
 			clonk->MakeCrewMember(plr);
 			clonk.MaxEnergy = GetGameClonkMaxEnergy()*1000;
 			clonk->DoEnergy(clonk.MaxEnergy/1000);
@@ -373,7 +373,7 @@ func Definition()
 	GhostClonk = { Prototype = Clonk,
 		IsGhost = this.IsGame,
 		Initialize = this.Ghost_Initialize,
-		MaxContentsCount = this.Ghost_MaxContentsCount,
+		MaxContentsCount = 0,
 		ContactIncinerate = 0,
 		HasFeelings = true, // Ghosts have feelings, too!
 		Visibility = VIS_Owner | VIS_God,
