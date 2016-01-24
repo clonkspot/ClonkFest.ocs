@@ -144,7 +144,7 @@ func NextGame()
 func SetNextGame(new_next_game, by_player)
 {
 	Log("%s sets next game to %s!", GetTaggedPlayerName(by_player), new_next_game->GetName());
-	Sound("Ding", true);
+	Sound("UI::Ding", true);
 	next_game = new_next_game;
 	return true;
 }

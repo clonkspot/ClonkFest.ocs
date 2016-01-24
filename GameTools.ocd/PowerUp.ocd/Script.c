@@ -27,7 +27,7 @@ public func OnProjectileHit(object shot)
 	{
 	ExplosionEffect(15, 0, 0);
 	CreateParticle("MagicSpark", 0,0, PV_Random(-30,30), PV_Random(-30,30), PV_Random(10,50), Particles_Spark(), 30);
-	Sound("BalloonPop", false, 1);
+	Sound("Objects::Balloon::Pop", false, 1);
 	var shooter = shot -> GetController();
 	FindSpot();
 	RemoveObject();
@@ -54,7 +54,7 @@ func FindSpot()
 		damagedBrick -> DoDamage(-damagedBrick->GetDamage());
 		//damagedBrick -> SetClrModulation(RGBa(0, 255, 0, 255));
 		DrawParticleLine("StarSpark",-GetX()+damagedBrick->GetX(), -GetY()+damagedBrick->GetY(), 0, 0, 5, 25, 0, 0, 0);
-		damagedBrick->Sound("GateHit");
+		damagedBrick->Sound("UI::Cash");
 		//Log("Healing some brick");
 	}
 	
@@ -78,5 +78,5 @@ func CreateBrick(int X)
 	};
 	DrawParticleLine("StarSpark",-GetX()+newBrick->GetX(), -GetY()+newBrick->GetY(), 0, 0, 5, 0, 0, 25, particles);
 	//newBrick->SetClrModulation(RGBa(0, 0, 255, 255));
-	newBrick->Sound("GateHit");
+	newBrick->Sound("UI::Cash");
 }

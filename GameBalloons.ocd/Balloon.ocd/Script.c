@@ -44,7 +44,7 @@ func CatchBlow(int dmg, object projectile)
 	var dy = (projectile->GetY() - GetY()) * 100 / GetCon();
 	if (dy < 13)
 	{
-		Sound("BalloonPop");
+		Sound("Objects::Balloon::Pop");
 		if (pop_cb) pop_cb->OnBalloonPopped(score, projectile->GetController());
 		projectile->~Hit();
 		RemoveObject();

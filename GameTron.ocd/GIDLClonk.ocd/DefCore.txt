@@ -13,7 +13,6 @@ Value=25
 Mass=50
 CrewMember=1
 ColorByOwner=1
-BorderBound=1
 StretchGrowth=1
 IncompleteActivity=1
 Oversize=1

@@ -93,3 +93,5 @@ Walk = {
 },
 
 };
+
+local BorderBound = C4D_Border_Sides;

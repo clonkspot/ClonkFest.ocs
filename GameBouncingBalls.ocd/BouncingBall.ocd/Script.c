@@ -51,7 +51,7 @@ func Timer()
 		if (ObjectDistance(coll) < 20)
 		{
 			coll->SetObjectLayer(coll);
-			Sound("Blast1");
+			Sound("Fire::Blast1");
 			Global->ExplosionEffect(5, coll->GetX(), coll->GetY());
 			coll->RemoveObject();
 			DoEnergy(-1);
@@ -79,7 +79,7 @@ func Timer()
 	if (bounced > 5)
 	{
 		// TODO sound
-		Sound("Click");
+		Sound("UI::Click2");
 	}
 	// passive movement
 	if (!is_crew) { SetXDir(vx); SetYDir(vy); return true; }

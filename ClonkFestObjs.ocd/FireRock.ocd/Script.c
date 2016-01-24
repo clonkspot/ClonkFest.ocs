@@ -62,7 +62,8 @@ public func HitObject(object obj)
 {	
 	if(obj->GetID()==Clonk)
 	{
-	ProjectileHit(obj,0,ProjectileHit_tumble);
+	obj->~OnProjectileHit(this);
+	WeaponTumble(obj, this->TumbleStrength());
 	obj->SetYDir(-10);
 	obj->SetXDir(GetXDir());
 	obj->Hurt();
@@ -70,6 +71,8 @@ public func HitObject(object obj)
 	AddEffect("Cooldown", this, 20, 10);
 	}
 }
+
+public func TumbleStrength() { return 100; }
 
 func FxCooldownTimer(target, effect, effect_time)
 {

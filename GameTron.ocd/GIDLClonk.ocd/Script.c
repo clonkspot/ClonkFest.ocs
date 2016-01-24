@@ -68,8 +68,8 @@ func ObjectControl(int plr, int ctrl, int x, int y, int strength, bool repeat, b
 		return true; // block anything else
 	var is_drawing = (GetAction() == "Draw");
 	// No direct turnaround
-	if (is_drawing && xdir * GetXDir() + ydir * GetYDir() < 0) { Sound("GIDLTurnError", true, 100, plr); return true; }
-	Sound("GIDLTurn");
+	if (is_drawing && xdir * GetXDir() + ydir * GetYDir() < 0) { Sound("GIDL_Clonk::GIDLTurnError", true, 100, plr); return true; }
+	Sound("GIDL_Clonk::GIDLTurn");
 	var speed = ActMap.Draw.Speed / 10;
 	if (is_drawing) Drawing();
 	SetComDir(comd);
@@ -118,3 +118,5 @@ WaitDraw = {
 },
 
 };
+
+local BorderBound = C4D_Border_Sides;

@@ -19,5 +19,5 @@ func ContactBottom()
 	CreateParticle("Dust", 0,10, PV_Random(-3,3), PV_Random(-3,3), PV_Random(5,8), particle, 15);
 	
 //	CreateParticle(,0, 10, RandomX(-3,3),RandomX(-3,3),RandomX(50,75),DoRGBaValue(-7183302,128,0));
-    Sound("Dig?");
+	Sound("Clonk::Action::Dig::Dig?");
 }

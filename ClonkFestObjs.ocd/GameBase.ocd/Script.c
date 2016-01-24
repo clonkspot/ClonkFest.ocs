@@ -196,13 +196,13 @@ func GameStartCountdown()
 {
 	if (startup_wait_time)
 	{
-		Sound("Click", true);
+		Sound("UI::Click", true);
 		CustomMessage(Format("@<c ff0000>%d...</c>", startup_wait_time));
 		--startup_wait_time;
 	}
 	else
 	{
-		Sound("BalloonPop", true);
+		Sound("UI::Trumpet", true);
 		CustomMessage("<c ff00>$MsgGo$</c>");
 		RemoveTimer("GameStartCountdown");
 		StartGameBase(GetGamePlayers());

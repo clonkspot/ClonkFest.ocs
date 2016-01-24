@@ -44,7 +44,7 @@ public func Timer()
 	if (time < 20)
 	{
 		clr = 0xff0000;
-		Sound("Click", true);
+		Sound("UI::Click", true);
 		if (time>0)
 			CustomMessage(Format("@<c ff0000>00:%02d</c>",time), nil, NO_OWNER, 0,-100);
 		else

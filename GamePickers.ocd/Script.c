@@ -156,7 +156,7 @@ func EndSequence(array winners)
 		if (clonk)
 		{
 			clonk->SetAction("Eat");
-			clonk->Sound("Munch1");
+			clonk->Sound("Clonk::Action::Munch?");
 			ScheduleCall(this, this.EndSequenceJuice, 9, 1, clonk);	//Juice with delay...
 		}
 	}

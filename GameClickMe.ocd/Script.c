@@ -81,7 +81,7 @@ func OnClickMe(int plr, int x, int y)
 	var target = FindObject(Find_ID(ClickMe_Target), Find_AtPoint(x-GetX(),y-GetY()), Find_Func("IsValidTarget"));
 	if (target)
 	{
-		Sound("Cash", true, 100);
+		Sound("UI::Cash", true, 100);
 		DoWealth(plr, 1);
 		target->OnFound(); // mark invalid and fade out
 		--num_remaining;
@@ -94,7 +94,7 @@ func OnClickMe(int plr, int x, int y)
 	}
 	else
 	{
-		Sound("WipfWhine", true, 100, plr);
+		Sound("UI::Error", true, 100, plr);
 		return false;
 	}
 }

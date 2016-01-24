@@ -20,7 +20,7 @@ func ContactBottom()
 	particle.G = 0xff;
 	particle.B = PV_Random(150,200);
 	CreateParticle("MagicSpark", 0,ReturnHeight()/2-1, PV_Random(-10,10), PV_Random(-10,10), PV_Random(10,50), particle, 15);
-    Sound("LightMetalHit?", false, 20);
+	Sound("Hits::Materials::Metal::LightMetalHit?", false, 20);
 }
 
 
@@ -28,13 +28,16 @@ public func HitObject(object obj)
 {	
 	if(obj->GetID()==Clonk)
 	{
-	ProjectileHit(obj,25,ProjectileHit_tumble);
+	obj->~OnProjectileHit(this);
+	WeaponTumble(obj, this->TumbleStrength());
 	obj->SetYDir(-50);
 	obj->Hurt();
 	RemoveEffect("HitCheck", this);
 	AddEffect("Cooldown", this, 20, 10);
 	}
 }
+
+public func TumbleStrength() { return 100; }
 
 func FxCooldownTimer(target, effect, effect_time)
 {
@@ -48,7 +51,7 @@ func FxCooldownTimer(target, effect, effect_time)
 public func OnStrike(object obj)
 {
 	if(obj->GetAlive())
-		Sound("ProjectileHitLiving?", false, 50);
+		Sound("Hits::ProjectileHitLiving?", false, 50);
 }
 
 func ReturnDamage()

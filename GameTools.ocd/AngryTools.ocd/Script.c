@@ -92,7 +92,7 @@ public func OnProjectileHit(object shot)
 	{
 		var xdir = shot->GetXDir()/3, ydir = shot->GetYDir();
 		shot->CreateParticle("WoodChip", 0,0, PV_Random(xdir-5,xdir+5), PV_Random(ydir-5,ydir+5), PV_Random(10,50), Particles_Spark(), 5);
-		Sound("BalloonPop", false, 1);
+		Sound("Objects::Balloon::Pop", false, 1);
 		shot->RemoveObject();
 		// Turn to hit mode
 		this.rotationArray = [1,0,0];

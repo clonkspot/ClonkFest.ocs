@@ -123,7 +123,7 @@ func EndSequence(winners)
 		var crew = GetCrew(plr);
 		if (crew)
 		{
-			crew->Sound("BalloonPop");
+			crew->Sound("Objects::Balloon::Pop");
 			crew->CreateParticle("MagicSpark", RandomX(-15,15),RandomX(-15,15), PV_Random(-30,30), PV_Random(-30,30), PV_Random(10,50), Particles_Colored(Particles_Spark(),0xff8000,0xffff00), 15);
 		}
 	}

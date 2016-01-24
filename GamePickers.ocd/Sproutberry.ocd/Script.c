@@ -34,7 +34,7 @@ local ActMap = {
 
 func ContactBottom()
 {
-	Sound("Splat");
+	Sound("Sproutberry::Splat");
 	var particle = Particles_Spark();
 	particle.R = 0xff;
 	particle.G = 0x00;
@@ -92,7 +92,7 @@ func FallDown()
 	this.Collectible=1;
 	SetAction("Fall");
 	AddTimer("LimitSpeed", 1);
-	Sound("Fall?");
+	Sound("Sproutberry::Fall?");
 }
 
 func LimitSpeed()
