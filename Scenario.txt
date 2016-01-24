@@ -24,7 +24,7 @@ Vegetation=Tree_Coniferous=5
 VegetationLevel=100,0,0,100
 InEarth=Rock=1;Gold=1;Dynamite=2;Loam=2
 InEarthLevel=65,0,0,100
-Sky=Clouds1;Default
+Sky=Clouds2
 MapWidth=90,0,64,10000
 MapHeight=160,0,40,10000
 Amplitude=10,10,0,100

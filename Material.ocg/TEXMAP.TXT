@@ -6,6 +6,7 @@ OverloadMaterials
 
 1=Vehicle-none
 2=HalfVehicle-none
+3=Tunnel-tunnel
 
 10=Tunnel-tunnel
 12=Tunnel-brickback

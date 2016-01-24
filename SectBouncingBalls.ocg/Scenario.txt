@@ -2,3 +2,4 @@
 TopOpen=0
 BottomOpen=0
 MapZoom=10,0,5,15
+Sky=Clouds2

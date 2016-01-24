@@ -23,13 +23,12 @@ global func EnableAllControls(bool enable_clonks)
 	return true;
 }
 
-global func ObjectControl()
+global func ObjectControl(...)
 {
 	if (g_controls_disabled)
 	{
-		Log("control disabled.");
+		//Log("control disabled.");
 		return true;
 	}
-	else Log("ok");
 	return _inherited(...);
 }
