@@ -9,6 +9,7 @@ Definition1=Objects.ocd
 Definition2=Decoration.ocd
 
 [Game]
+Mode=Melee
 Goals=Goal_Melee=1;
 
 [Player1]
