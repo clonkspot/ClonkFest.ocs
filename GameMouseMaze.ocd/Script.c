@@ -28,7 +28,7 @@ func GetGameMaxZoomRange() { return {x=400, y=300}; }
 func InitGame(array players)
 {
 	// Brick blocks start until game is really started
-	DrawMaterialQuad("Brick-brick1", entry_x*map_zoom+2,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom+map_zoom, entry_x*map_zoom+2,entry_y*map_zoom+map_zoom);
+	DrawMaterialQuad("Brick-brick", entry_x*map_zoom+2,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom, entry_x*map_zoom+6,entry_y*map_zoom+map_zoom, entry_x*map_zoom+2,entry_y*map_zoom+map_zoom);
 	// Goal
 	goal_cheese = CreateObjectAbove(Cheese, exit_cave_x*map_zoom+map_zoom/2, exit_cave_y*map_zoom + map_zoom/2);
 	return true;
@@ -166,7 +166,7 @@ func InitializeMap(proplist map)
 	var total_wdt = wdt*2+1+pad_left+pad_right, total_hgt = hgt*2+1+pad_top+pad_bottom;
 	map->Resize(total_wdt, total_hgt);
 	var bg_mat_name = "Sky";
-	var front_mat_name = "BrickSoft-brick1"; // "DuroLava"
+	var front_mat_name = "BrickSoft-brick"; // "DuroLava"
 	var blocked_mat_name = "Water";
 	map->Draw(bg_mat_name, nil, [0,0,1,1]);
 	var bg_mat = map->GetPixel(0,0);
