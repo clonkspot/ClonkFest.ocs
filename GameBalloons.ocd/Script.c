@@ -53,12 +53,13 @@ func StartGame(array players)
 	AddTimer(this.AmmoTimer, 80);
 	AddTimer(this.BalloonTimer, 50);
 	AddTimer(this.WindTimer, 50);
+	return true;
 }
 
 func CataTimer()
 {
 	// Catapult status update
-	for (var cata in FindObjects(Find_ID(Catapult)))
+	for (var cata in FindObjects(Find_ID(Catapult), Find_AnyLayer()))
 		CustomMessage(cata_status_strings[cata->ContentsCount()], cata, cata->GetOwner());
 	return true;
 }
@@ -67,7 +68,7 @@ func AmmoTimer()
 {
 	// Every catapult gets some new firestones
 	var firestone;
-	for (var cata in FindObjects(Find_ID(Catapult)))
+	for (var cata in FindObjects(Find_ID(Catapult), Find_AnyLayer()))
 		if (cata->ContentsCount() < max_firestones)
 			if (firestone = cata->CreateContents(Rock))
 			{
