@@ -32,7 +32,7 @@ func InitGame(array players)
 			var ay0=y0, ay1=y1;
 			while (!GBackSolid(x,ay0)) ++ay0;
 			while (!GBackSolid(x,ay1)) --ay1;
-			DrawMaterialQuad("Tunnelbrick-brick1", x,ay0, x+1,ay0, x+1,ay1+1, x,ay1+1, true);
+			DrawMaterialQuad("Tunnelbrick-brick", x,ay0, x+1,ay0, x+1,ay1+1, x,ay1+1, true);
 		}
 	}
 	return inherited(players);
