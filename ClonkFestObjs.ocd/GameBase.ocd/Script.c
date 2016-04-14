@@ -216,12 +216,7 @@ func StartGameBase(array players)
 	if (GetGameRaceTarget()) AddTimer(this.RaceGoalCheck, 5);
 	// Countdown timer
 	var max_time = GetGameTimeLimit();
-	if (max_time)
-	{
-		game_timer = CreateObject(GUI_Timer, 0, 0, NO_OWNER);
-		game_timer->SetPosition((-64-16)*2-32-GUI_Timer->GetDefHeight()/2,8+GUI_Timer->GetDefHeight()/2);
-		game_timer->SetTime(max_time, this);
-	}
+	if (max_time) GUI_Clock->CreateCountdown(max_time, nil, this, false);
 	return StartGame(players);
 }
 
@@ -242,11 +237,15 @@ func RelaunchPlayer(int plr)
 	// Default player elimination: Relaunch as ghost
 	GhostPlayer(plr);
 	// If this is last man standing, check game end condition
+	var remaining_players = GetLength(GetLivingGamePlayers());
+	var min_players = 1;
 	if (IsGameLastManStanding())
 	{
 		Scoreboard->SetPlayerData(plr, "game", "{{Clonk_Grave}}", -1);
-		if(GetLength(GetLivingGamePlayers())<=1) FinishGame();
+		++min_players;
 	}
+	// Otherwise, game also ends if all players are dead (e.g. treasure hunt)
+	if(remaining_players<min_players) FinishGame();
 	return true;
 }
 
@@ -313,7 +312,7 @@ func FinishGame()
 	return true;
 }
 
-func OnTimeUp()
+func OnCountdownFinished()
 {
 	// Timer is up - default action is to finish game
 	return FinishGame();
@@ -365,8 +364,6 @@ func GetShortDescription(int plr) { return Name; }
 /* Ghosts */
 
 local GhostClonk;
-
-func Ghost_MaxContentsCount() { return 0; }
 
 func Definition()
 {

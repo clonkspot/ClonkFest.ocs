@@ -59,16 +59,16 @@ protected func Construction()
 }
 
 public func HitObject(object obj)
-{	
+{
 	if(obj->GetID()==Clonk)
 	{
-	obj->~OnProjectileHit(this);
-	WeaponTumble(obj, this->TumbleStrength());
-	obj->SetYDir(-10);
-	obj->SetXDir(GetXDir());
-	obj->Hurt();
-	RemoveEffect("HitCheck", this);
-	AddEffect("Cooldown", this, 20, 10);
+		obj->~OnProjectileHit(this);
+		WeaponTumble(obj, this->TumbleStrength());
+		obj->SetYDir(-10);
+		obj->SetXDir(GetXDir());
+		obj->~PlaySoundHurt();
+		RemoveEffect("HitCheck", this);
+		AddEffect("Cooldown", this, 20, 10);
 	}
 }
 
