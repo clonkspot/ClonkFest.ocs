@@ -3,6 +3,7 @@
 
 local rotationArray = [0,1,0];
 local isTarget = 1;
+local ContactCalls = 1;
 local ActMap = {
 	Float = {
 			Prototype = Action,
@@ -41,16 +42,6 @@ public func Initialize()
     SetAction("Float");
     SetR(180);
     AddEffect("Rotate", this, 1, 1, this);
-	AddEffect("MovementCheck", this, 1, 1, this);
-}
-
-func FxMovementCheckTimer(target, effect, effect_time)
-{
-	if (this->GetYDir() == 0)
-	{
-		this->ContactBottom();
-		RemoveEffect("MovementCheck", this, effect, true);
-	}
 }
 
 func FxRotateTimer(target, effect, effect_time)
