@@ -31,8 +31,8 @@ func InitGame(array players)
 {
 	// Weapons!
 	var r = (Game_Deathmatch_WeaponIndex++)%3;
-	var weapon = [Sword, Bow, Musket][r];
-	var ammo = [nil, Arrow, LeadShot][r];
+	var weapon = [Sword, Bow, Blunderbuss][r];
+	var ammo = [nil, Arrow, LeadBullet][r];
 	for (var plr in players)
 	{
 		var clonk = GetCrew(plr);

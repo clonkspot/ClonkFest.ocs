@@ -53,7 +53,7 @@ func FindSpot()
 		var damagedBrick = FindObjects(Find_ID(EarthBrick), Sort_Reverse(Sort_Func("GetDamage")))[0];
 		damagedBrick -> DoDamage(-damagedBrick->GetDamage());
 		//damagedBrick -> SetClrModulation(RGBa(0, 255, 0, 255));
-		DrawParticleLine("StarSpark",-GetX()+damagedBrick->GetX(), -GetY()+damagedBrick->GetY(), 0, 0, 5, 25, 0, 0, 0);
+		DrawParticleLine("StarSpark",-GetX()+damagedBrick->GetX(), -GetY()+damagedBrick->GetY(), 0, 0, 5, 25, { Prototype = Particles_Flash(), Size = 20, R = 255, G = 0, B = 0 });
 		damagedBrick->Sound("UI::Cash");
 		//Log("Healing some brick");
 	}

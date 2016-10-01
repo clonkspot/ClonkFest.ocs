@@ -2,7 +2,6 @@
 id=AngrySword
 Version=5,2,0,1
 Category=C4D_Object
-ContactCalls=1
 Width=6
 Height=14
 Offset=-3,-7
@@ -13,4 +12,3 @@ VertexCNAT=8,8
 Rotate=1
 Value=10
 Mass=10
-Components=Wood=2;Metal=2;
