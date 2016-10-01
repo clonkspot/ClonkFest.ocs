@@ -374,6 +374,7 @@ func Definition()
 		ContactIncinerate = 0,
 		HasFeelings = true, // Ghosts have feelings, too!
 		Visibility = VIS_Owner | VIS_God,
+		ObjectControl = this.Ghost_ObjectControl,
 	};
 	return true;
 }
@@ -389,13 +390,25 @@ func Ghost_Initialize()
 	return true;
 }
 
+func Ghost_ObjectControl(int plr, int ctrl, int x, int y, int strength, bool repeat, int status)
+{
+	// Ghosts shouldn't do contents menus
+	if (ctrl == CON_Contents && status == CONS_Down)
+	{
+		// But allow closing
+		if (this->~GetMenu()) this->~TryCancelMenu();
+		return true;
+	}
+	return Call(Clonk.ObjectControl, plr, ctrl, x, y, strength, repeat, status);
+}
+
 func GhostPlayer(int plr)
 {
 	// Determine ghost position
 	var ghost_pos;
 	var last_crew = GetCursor(plr);
 	if (!last_crew) last_crew = GetCrew(plr);
-	if (last_crew) ghost_pos = [BoundBy(last_crew->GetX(),5,LandscapeWidth()-4), BoundBy(last_crew->GetDefBottom(),20,LandscapeHeight()-21)]; else ghost_pos = GetGameStartPos(plr);
+	if (last_crew) ghost_pos = { x=BoundBy(last_crew->GetX(),5,LandscapeWidth()-4), y=BoundBy(last_crew->GetDefBottom(),20,LandscapeHeight()-21) }; else ghost_pos = GetGameStartPos(plr);
 	// Make sure player has no regular Clonks left
 	for (var i = GetCrewCount(plr); i>=0; --i) if (last_crew=GetCrew(plr, i)) if (last_crew->GetAlive()) last_crew->Kill();
 	// Create ghost!
