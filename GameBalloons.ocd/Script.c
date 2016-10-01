@@ -9,7 +9,7 @@
 
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Balloons"; }
-func GetGameStartPos(int player) { return {x=20+Random(150), y=207-10}; }
+func GetGameStartPos(int player) { return {x=20+Random(130), y=207-10}; }
 func GetGameClonkMaxContents() { return 0; }
 func GetGameTimeLimit() { return 300; }
 
@@ -40,7 +40,7 @@ func InitGame(array players)
 	return true;
 }
 
-local max_firestones = 3;
+local max_firestones = 5;
 local cata_status_strings;
 
 func StartGame(array players)
