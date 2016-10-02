@@ -99,6 +99,7 @@ func InitFest() { return true; }
 
 // Status
 func IsGame() { return true; }
+func IsNotGame() { return false; }
 
 
 /* Initialization */
@@ -375,6 +376,7 @@ func Definition()
 		HasFeelings = true, // Ghosts have feelings, too!
 		Visibility = VIS_Owner | VIS_God,
 		ObjectControl = this.Ghost_ObjectControl,
+		IsProjectileTarget = this.IsNotGame,
 	};
 	return true;
 }
