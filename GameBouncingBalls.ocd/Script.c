@@ -40,16 +40,24 @@ func StartGame(array players)
 	];
 	curr_wall_dir = -1; // first wall will be from top or bottom
 	wall_time = -1;
+	SchedulePowerup();
 	return true;
 }
 
 local curr_wall_dir;
 local wall_time;
+local powerup_time;
+
+public func SchedulePowerup()
+{
+	powerup_time = 25+Random(25);
+	return true;
+}
 
 func Timer()
 {
 	++time;
-	var n = 1+Random(time/80);
+	var n = 2+Random(time/60);
 	if (Random(18)<n && time-wall_time > 3 && time > 4)
 	{
 		// Schedule next wall
@@ -58,7 +66,7 @@ func Timer()
 	}
 	else if (time == wall_time)
 	{
-		// Creater scheduled wall
+		// Create scheduled wall
 		LaunchWall(curr_wall_dir);
 	}
 	while (n--)
@@ -69,10 +77,15 @@ func Timer()
 		// Create individual rocks
 		LaunchFireRock(b.x+Random(b.xl)*b.d, b.y+Random(b.yl)*b.d, b.nx*10+Random(5)-2, b.ny*10+Random(5)-2);
 	}
+	// Powerups
+	if (powerup_time && !--powerup_time)
+	{
+		CreateObject(BouncingBalls_Powerup, 50+Random(LandscapeWidth()-100), 50+Random(LandscapeHeight()-100));
+	}
 	return true;
 }
 
-func LaunchWall(wall_dir)
+public func LaunchWall(wall_dir)
 {
 	// Launch big wall of rocks
 	var dist = 25;

@@ -1,0 +1,7 @@
+[DefCore]
+id=BouncingBalls_Powerup
+Version=8,0
+Category=C4D_StaticBack | C4D_IgnoreFoW
+Width=20
+Height=20
+Offset=-10,-10

@@ -1,0 +1,2 @@
+Name=Powerup
+Description=Gives a bonus to the collecting player.

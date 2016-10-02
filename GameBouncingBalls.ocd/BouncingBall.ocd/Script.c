@@ -7,7 +7,7 @@
 
 #include Library_HUDAdapter
 
-local target_x, target_y, is_crew;
+local target_x, target_y, is_crew, max_accel = 2;
 
 func Initialize()
 {
@@ -98,7 +98,6 @@ func Timer()
 		tvx = tvy = 0;
 	}
 	//accelerate towards desired speed
-	var max_accel = 2;
 	SetXDir(BoundBy(tvx, vx-max_accel, vx+max_accel));
 	SetYDir(BoundBy(tvy, vy-max_accel, vy+max_accel));
 	return true;

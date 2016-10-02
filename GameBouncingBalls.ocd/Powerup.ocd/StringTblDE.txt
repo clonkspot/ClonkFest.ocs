@@ -1,0 +1,2 @@
+Name=Powerup
+Description=Gibt dem einsammelnden Ball einen Bonus.

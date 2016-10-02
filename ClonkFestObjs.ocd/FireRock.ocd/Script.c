@@ -22,15 +22,15 @@ func Initialize()
 	SetObjectBlitMode(GFX_BLIT_Additive);
 }
 
-func Launch(int targetX, int targetY)
+func Launch(int targetX, int targetY, int speed)
 {
-	AddEffect("HitCheck", this, 1,2, nil,nil);
+	if (!launched) AddEffect("HitCheck", this, 1,2, nil,nil);
 	var ang = Angle(GetX(), GetY(), targetX, targetY);
-	SetVelocity(ang, 15);
+	SetVelocity(ang, speed ?? 15);
 	return true;
 }
 
-local particle;
+local particle, launched;
 
 func Launch2(int x, int y, int vx, int vy, int clr)
 {
@@ -38,9 +38,11 @@ func Launch2(int x, int y, int vx, int vy, int clr)
 	SetXDir(vx); SetYDir(vy);
 	// Color trail
 	particle = Particles_Colored(Particles_Air(), clr);
-	AddTimer(this.Trail, 4);
+	if (!launched) AddTimer(this.Trail, 4);
 	// Calculate when object will leave top of landscape to remove
+	if (launched) ClearScheduleCall(this, "RemoveObject");
 	if (vy < 0) ScheduleCall(this, "RemoveObject", Max(-10*(y+10)/vy,1), 1);
+	launched = true;
 	return true;
 }
 
