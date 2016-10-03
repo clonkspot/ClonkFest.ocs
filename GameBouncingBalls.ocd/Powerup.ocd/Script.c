@@ -122,7 +122,7 @@ func FxSuperberryStop(object target, proplist fx, int reason, bool temporary)
 	target.max_accel -= 10;
 	if (!temporary)
 	{
-		target->SetClrModulation(RGB(255,255,255));
+		target->SetClrModulation(GetPlayerColor(target->GetOwner()));
 		target->Sound("BouncingBalls_Powerup::superberry?", false, 50, nil, -1);
 	}
 	return FX_OK;
