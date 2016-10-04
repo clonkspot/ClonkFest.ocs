@@ -1,0 +1,2 @@
+Name=Hot Ice
+Description=Only one will survive.
