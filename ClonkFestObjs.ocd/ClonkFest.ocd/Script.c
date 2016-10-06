@@ -67,7 +67,7 @@ func GetRandomGame()
 func StartFest()
 {
 	score = [];
-	score_to_win = Max(GetLength(games) * 2 / 3,1);
+	score_to_win = Max(5, 10 - GetStartupPlayerCount()/2);//Max(GetLength(games) * 2 / 3,1);
 	open_games = games[:];
 	Scoreboard->Init([{key = "wins", title = Nugget, sorted = true, desc = true, default = Format("0/%d", score_to_win), priority = 75}]);
 	for (var i=0; i<GetPlayerCount(C4PT_User); ++i)
