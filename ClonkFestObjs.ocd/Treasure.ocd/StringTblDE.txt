@@ -1,2 +1,2 @@
-Name=Goldbarren
+Name=Schatz
 Description=Kostbares Gold! Nützlich für den Handel für teure Waren.

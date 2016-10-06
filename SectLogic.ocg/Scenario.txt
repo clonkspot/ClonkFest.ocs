@@ -1,0 +1,9 @@
+[Landscape]
+BottomOpen=1
+LeftOpen=10000
+RightOpen=10000
+AutoScanSideOpen=false
+MapWidth=64,0,64,10000
+MapHeight=40,0,40,10000
+MapZoom=8,0,0,8
+Sky=Clouds2
