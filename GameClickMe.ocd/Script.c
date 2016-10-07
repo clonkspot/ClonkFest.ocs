@@ -16,7 +16,7 @@ func GetGameViewLock() { return false; }
 func GetGameStartPos(int player) { return {x=LandscapeWidth()/2-100, y=LandscapeHeight()/2}; }
 func GetGameClonkMaxContents() { return 1; }
 
-local num_remaining;
+local num_remaining, scores;
 
 func InitGame(array players)
 {
@@ -32,9 +32,12 @@ func InitGame(array players)
 		PlaceQuest(q);
 		--n_place;
 	}
+	Scoreboard->Init([{key = "game", title = Format("{{Wipf}}/%d", num_remaining), sorted = true, desc = true, default = "0", priority = 100}]);
+	scores = [];
 	for (var plr in players)
 	{
-		SetWealth(plr,0);
+		scores[plr] = 0;
+		Scoreboard->SetPlayerData(plr, "game", 0);
 		var crew = GetCrew(plr);
 		crew->SetCategory(1);
 		crew.Visibility = VIS_None;
@@ -64,7 +67,7 @@ func OnGameFinished()
 	var winners = [];
 	for (var plr in GetGamePlayers())
 	{
-		var score = GetWealth(plr);
+		var score = scores[plr];
 		if (score >= max_score) winners[GetLength(winners)] = plr;
 	}
 	SetGameWinners(winners);
@@ -82,13 +85,14 @@ func OnClickMe(int plr, int x, int y)
 	if (target)
 	{
 		Sound("UI::Cash", true, 100);
-		DoWealth(plr, 1);
+		++scores[plr];
+		Scoreboard->SetPlayerData(plr, "game", scores[plr]);
 		target->OnFound(); // mark invalid and fade out
 		--num_remaining;
-		var plr_score = GetWealth(plr);
+		var plr_score = scores[plr];
 		var max_score = GetMaxScore();
 		var any_chance;
-		for (var other_plr in GetGamePlayers()) if (plr != other_plr) if (GetWealth(other_plr) + num_remaining >= plr_score) any_chance = true;
+		for (var other_plr in GetGamePlayers()) if (plr != other_plr) if (scores[other_plr] + num_remaining >= plr_score) any_chance = true;
 		if (!any_chance || !num_remaining) FinishGame();
 		return true;
 	}
@@ -102,7 +106,7 @@ func OnClickMe(int plr, int x, int y)
 func GetMaxScore()
 {
 	var max_score = 0;
-	for (var plr in GetGamePlayers()) max_score = Max(max_score, GetWealth(plr));
+	for (var plr in GetGamePlayers()) max_score = Max(max_score, scores[plr]);
 	return max_score;
 }
 
