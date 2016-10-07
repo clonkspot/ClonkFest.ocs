@@ -1,0 +1,12 @@
+[DefCore]
+id=AuctionWheel
+Version=6,0
+Category=C4D_None
+Width=16
+Height=16
+Offset=-8,-8
+Vertices=3
+VertexX=-4,4,0
+VertexY=8,8,0
+VertexFriction=100,100,100
+Mass=1000

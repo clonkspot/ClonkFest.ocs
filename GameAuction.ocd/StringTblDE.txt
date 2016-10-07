@@ -1,0 +1,2 @@
+Name=Auktion
+Description=Ersteigere die besten Waffen und gewinne das Melee!

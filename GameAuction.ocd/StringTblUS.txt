@@ -1,0 +1,2 @@
+Name=Auction
+Description=Bid on weapons and win the melee!
