@@ -64,6 +64,9 @@ func IsGameLastManStanding() { return false; }
 // If the goal is to reach a target, object, return this object here
 func GetGameRaceTarget() { return nil; }
 
+// Does this game have controllable ghost clonks?
+func HasGhostClonks() { return true; }
+
 // Callback function to be overloaded for custom game initialization
 // This is called after section load and all generic game initialization (Clonk placement, player properties set, etc.)
 // players is an array of player numbers of players that participate. Do not assume that all players take part.
@@ -427,6 +430,12 @@ func GhostPlayer(int plr)
 	{
 		ghost->MakeCrewMember(plr);
 		SetCursor(plr, ghost);
+	}
+	// Ghost invisible?
+	if (~this->HasGhostClonks())
+	{
+		ghost.Visibility = VIS_None;
+		ghost->SetCategory(C4D_StaticBack);
 	}
 	return true;
 }

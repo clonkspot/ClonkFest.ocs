@@ -17,6 +17,7 @@ func GetGameClonkMaxEnergy() { return BouncingBall.MaxEnergy; }
 func GetGameStartPos(int player, int start_index, int max_index) { return {x=Random(LandscapeWidth()-100)+50, y=Random(LandscapeHeight()-100)+50}; }
 func GetGameClonkMaxContents() { return 0; }
 func IsGameLastManStanding() { return true; }
+func HasGhostClonks() { return false; } // ghosts don't really fit
 
 func InitGame(array players)
 {

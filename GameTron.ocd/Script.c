@@ -9,6 +9,7 @@
 
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Tron"; }
+func HasGhostClonks() { return false; } // ghosts don't really fit
 
 func InitGame(array players)
 {
