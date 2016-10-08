@@ -432,7 +432,7 @@ func GhostPlayer(int plr)
 		SetCursor(plr, ghost);
 	}
 	// Ghost invisible?
-	if (~this->HasGhostClonks())
+	if (!this->HasGhostClonks())
 	{
 		ghost.Visibility = VIS_None;
 		ghost->SetCategory(C4D_StaticBack);
