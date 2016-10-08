@@ -24,7 +24,7 @@ func GetGameClonkMaxContents() { return 2; }
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive
 
 static Game_HotIce_MapIndex;
-local player_spawn_positions, map_width; // change to static when editing in template
+static player_spawn_positions, map_width; // static to be able to use the map for Auction
 
 func InitFest()
 {
