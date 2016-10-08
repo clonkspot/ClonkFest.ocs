@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "TreasureHunt"; }
 func GetGameClonkMaxEnergy() { return 42; }
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2+Random(100)-50, y=50}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2+Random(100)-50, y=50}; }
 func GetGameClonkMaxContents() { return 5; }
 func GetGameTimeLimit() { return 300; }
 

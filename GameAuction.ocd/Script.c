@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Luchs"; }
 func GetGameSection() { return "Molay"; }
 func GetGameClonkMaxEnergy() { return 50; }
-func GetGameStartPos(int player) { return {x=100+Random(100), y=315}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=100+Random(100), y=315}; }
 func GetGameClonkMaxContents() { return 5; }
 
 func IsGameLastManStanding() { return true; }

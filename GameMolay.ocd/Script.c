@@ -14,7 +14,7 @@ func GetGameAuthor() { return "Pyrit"; }
 func GetGameMinPlayers() { return 2; }
 func GetGameMaxPlayers() { return nil; }
 func GetGameSection() { return "Molay"; }
-func GetGameStartPos(int player) { return [{x=30,y=87},{x=97,y=87},{x=166,y=74},{x=257,y=79}][Random(4)]; }
+func GetGameStartPos(int player, int start_index, int max_index) { return [{x=30,y=87},{x=97,y=87},{x=166,y=74},{x=257,y=79}][start_index % 4]; }
 func IsGameLastManStanding() { return true; }
 func GetGameClonkMaxContents() { return 0; }
 

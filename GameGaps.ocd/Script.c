@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Gaps"; }
 func GetGameClonkMaxEnergy() { return 10; }
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2-10+Random(20), y=40}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2-10+Random(20), y=40}; }
 func GetGameClonkMaxContents() { return 0; }
 func GetGameRaceTarget() { return g_Goal_Flag; }
 

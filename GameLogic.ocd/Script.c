@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Logic"; }
 func GetGameClonkMaxEnergy() { return 42; }
-func GetGameStartPos(int player) { return {x=100+Random(120), y=224}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=100+Random(120), y=224}; }
 func GetGameClonkMaxContents() { return 1; }
 func GetGameTimeLimit() { return 300; }
 
@@ -212,21 +212,6 @@ private func GetRandomAnswerSubset(int n)
 	}
 	return result;
 }
-
-// Shuffle array in place
-private func ShuffleArray(array arr)
-{
-	var n = GetLength(arr);
-	for (var i = 0; i < n; ++i)
-	{
-		var j = Random(n);
-		var v = arr[j];
-		arr[j] = arr[i];
-		arr[i] = v;
-	}
-	return arr;
-}
-
 
 
 /* GUI */

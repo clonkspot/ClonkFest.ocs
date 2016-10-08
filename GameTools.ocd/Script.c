@@ -15,7 +15,7 @@ local HorizonHeight = 185;
 func GetGameAuthor() { return "Pyrit"; }
 func GetGameSection() { return "Tools"; }
 func GetGameClonkMaxEnergy() { return 50; }
-func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-101)+50, y=HorizonHeight-25}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=Random(LandscapeWidth()-101)+50, y=HorizonHeight-25}; }
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive
 func GetGameClonkMaxContents() { return 2; }
 

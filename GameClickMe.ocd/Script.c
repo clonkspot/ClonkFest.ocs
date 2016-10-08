@@ -13,7 +13,7 @@ func GetGameTimeLimit() { return 150; }
 func GetGameMinPlayers() { return 1; }
 func GetGameMaxZoomRange() { return {x=LandscapeWidth(), y=LandscapeHeight()}; }
 func GetGameViewLock() { return false; }
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2-100, y=LandscapeHeight()/2}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2-100, y=LandscapeHeight()/2}; }
 func GetGameClonkMaxContents() { return 1; }
 
 local num_remaining, scores;

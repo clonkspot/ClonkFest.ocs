@@ -18,6 +18,7 @@
 static g_game; // Singleton variable set to instance of this
 
 local startup_wait_time; // countdown
+local startup_player_count; // Number of players when game was started
 local game_timer; // pointer to GUI_Timer object
 
 /* To be overloaded by games */
@@ -37,7 +38,7 @@ func GetGameSection() { return "TODO"; }
 func GetGameMaxZoomRange() { return {x=LandscapeWidth(), y=LandscapeHeight()}; }
 
 // Player Clonk start position. Called once for each player. Called again for ghosts if there is no crew object left
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2+Random(101)-50, y=LandscapeHeight()/2}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2+Random(101)-50, y=LandscapeHeight()/2}; }
 
 // Return true if the player may not scroll around
 func GetGameViewLock() { return true; }
@@ -137,7 +138,12 @@ func InitGameBase()
 	//time->SetCycleSpeed(20);
 	// Init players
 	EnableAllControls();
-	var players = GetGamePlayers();
+	var players = GetGamePlayers(), i;
+	startup_player_count = GetLength(players);
+	var start_indices = CreateArray(startup_player_count);
+	for (i=0; i<startup_player_count; ++i) start_indices[i] = i;
+	ShuffleArray(start_indices);
+	i = 0;
 	for (var plr in players)
 	{
 		// Viewport settings
@@ -149,7 +155,7 @@ func InitGameBase()
 		// Properties
 		SetWealth(plr, 0);
 		// Initial Clonk init
-		LaunchPlayerClonk(plr);
+		LaunchPlayerClonk(plr, start_indices[i++ % startup_player_count]);
 	}
 	// Race init?
 	var race_target = GetGameRaceTarget();
@@ -173,10 +179,12 @@ func InitGameBase()
 	return true;
 }
 
-func LaunchPlayerClonk(int plr)
+func LaunchPlayerClonk(int plr, int start_index)
 {
+	// Default params
+	if (!GetType(start_index)) start_index = Random(startup_player_count);
 	// Create startup Clonk at game-defined position
-	var pos = GetGameStartPos(plr);
+	var pos = GetGameStartPos(plr, start_index, startup_player_count);
 	var clonk_type = GetGameClonkType(), clonk;
 	if (clonk_type)
 	{
@@ -410,7 +418,7 @@ func GhostPlayer(int plr)
 	var ghost_pos;
 	var last_crew = GetCursor(plr);
 	if (!last_crew) last_crew = GetCrew(plr);
-	if (last_crew) ghost_pos = { x=BoundBy(last_crew->GetX(),5,LandscapeWidth()-4), y=BoundBy(last_crew->GetDefBottom(),20,LandscapeHeight()-21) }; else ghost_pos = GetGameStartPos(plr);
+	if (last_crew) ghost_pos = { x=BoundBy(last_crew->GetX(),5,LandscapeWidth()-4), y=BoundBy(last_crew->GetDefBottom(),20,LandscapeHeight()-21) }; else ghost_pos = GetGameStartPos(plr, Random(startup_player_count), startup_player_count);
 	// Make sure player has no regular Clonks left
 	for (var i = GetCrewCount(plr); i>=0; --i) if (last_crew=GetCrew(plr, i)) if (last_crew->GetAlive()) last_crew->Kill();
 	// Create ghost!

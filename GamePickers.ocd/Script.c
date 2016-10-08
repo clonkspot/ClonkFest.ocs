@@ -11,7 +11,7 @@ func GetGameAuthor() { return "Pyrit"; }
 func GetGameSection() { return "Pickers"; }
 func GetGameClonkMaxContents() { return 0; }
 
-func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-61)+30, y=188}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=Random(LandscapeWidth()-61)+30, y=188}; }
 
 local MySproutberry, trees;
 local GoalNumBerries = 20;

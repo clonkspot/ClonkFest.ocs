@@ -14,7 +14,7 @@ func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "BouncingBalls"; }
 func GetGameClonkType() { return BouncingBall; }
 func GetGameClonkMaxEnergy() { return BouncingBall.MaxEnergy; }
-func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-100)+50, y=Random(LandscapeHeight()-100)+50}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=Random(LandscapeWidth()-100)+50, y=Random(LandscapeHeight()-100)+50}; }
 func GetGameClonkMaxContents() { return 0; }
 func IsGameLastManStanding() { return true; }
 

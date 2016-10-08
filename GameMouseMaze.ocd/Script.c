@@ -19,7 +19,7 @@ func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "MouseMaze"; }
 func GetGameClonkType() { return MazeMouse; }
 func GetGameClonkMaxEnergy() { return 42; }
-func GetGameStartPos(int player) { return {x=entry_cave_x*map_zoom+map_zoom/2+0*RandomX(-20,20), y=entry_cave_y*map_zoom+map_zoom/2+0*RandomX(-20,20)}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=entry_cave_x*map_zoom+map_zoom/2+0*RandomX(-20,20), y=entry_cave_y*map_zoom+map_zoom/2+0*RandomX(-20,20)}; }
 func GetGameClonkMaxContents() { return 0; }
 func GetGameTimeLimit() { return 300; }
 func GetGameRaceTarget() { return goal_cheese; }

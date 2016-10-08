@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "FlintRain"; }
 func GetGameClonkMaxEnergy() { return 42; }
-func GetGameStartPos(int player) { return {x=LandscapeWidth()/2+Random(100)-50, y=300}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2+Random(100)-50, y=300}; }
 func GetGameClonkMaxContents() { return 1; }
 
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive

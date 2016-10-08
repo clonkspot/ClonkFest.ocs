@@ -52,7 +52,7 @@ func OnGameFinished()
 //func GetGameMaxZoomRange() { return {x=LandscapeWidth()/2, y=LandscapeHeight()/2}; }
 
 // Player Clonk start position. Called once for each player. Called again for ghosts if there is no crew object left
-//func GetGameStartPos(int player) { return {x=LandscapeWidth()/2+Random(101)-50, y=LandscapeHeight()/2}; }
+//func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2+Random(101)-50, y=LandscapeHeight()/2}; }
 
 // Return true if the player may not scroll around
 //func GetGameViewLock() { return true; }

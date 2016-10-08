@@ -13,7 +13,15 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Deathmatch"; }
 func GetGameClonkMaxEnergy() { return 5; }
-func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-101)+50, y=LandscapeHeight()/2}; }
+func GetGameStartPos(int player, int start_index, int player_count)
+{
+	// Evenly distributed start positions
+	var x = 50 + start_index * (LandscapeWidth()-101) / Max(1, player_count-1);
+	var y = LandscapeHeight()/2;
+	while (!GBackSolid(x, y)) ++y;
+	return {x=x, y=y};
+}
+
 func GetGameClonkMaxContents() { return 2; }
 
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive

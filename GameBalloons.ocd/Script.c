@@ -9,7 +9,7 @@
 
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "Balloons"; }
-func GetGameStartPos(int player) { return {x=20+Random(130), y=207-10}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=20+Random(130), y=207-10}; }
 func GetGameClonkMaxContents() { return 0; }
 func GetGameTimeLimit() { return 300; }
 

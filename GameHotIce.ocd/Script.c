@@ -13,7 +13,12 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Sven2"; }
 func GetGameSection() { return "HotIce"; }
 func GetGameClonkMaxEnergy() { return 100; }
-func GetGameStartPos(int player) { return {x=Random(LandscapeWidth()-101)+50, y=LandscapeHeight()/2}; }
+func GetGameStartPos(int player, int start_index, int max_index)
+{
+	var map_zoom = LandscapeWidth() / map_width;
+	var pos = player_spawn_positions[start_index % GetLength(player_spawn_positions)];
+	return {x=pos[0]*map_zoom, y=pos[1]*map_zoom};
+}
 func GetGameClonkMaxContents() { return 2; }
 
 func IsGameLastManStanding() { return true; } // Game should end automatically if only one player is left alive
@@ -49,10 +54,6 @@ func GetRandomPermutation(int n)
 func InitGame(array players)
 {
 	// Place players
-	var i;
-	var map_zoom = LandscapeWidth() / map_width;
-	var n_players = GetLength(players);
-	var perm = GetRandomPermutation(n_players);
 	for (var player in players)
 	{
 		var clonk = GetCrew(player);
@@ -62,10 +63,7 @@ func InitGame(array players)
 			var launcher = clonk->CreateContents(GrenadeLauncher);
 			launcher->CreateContents(IronBomb);
 			launcher->AddTimer(this.ReplenishLauncherAmmo, 10);
-			var pos = player_spawn_positions[perm[i % GetLength(player_spawn_positions)]];
-			clonk->SetPosition(pos[0]*map_zoom+map_zoom/2, pos[1]*map_zoom-10);
 		}
-		++i;
 	}
 	// Place materials
 	var i,pos;

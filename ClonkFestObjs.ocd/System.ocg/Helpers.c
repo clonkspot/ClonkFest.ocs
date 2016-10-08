@@ -20,3 +20,17 @@ global func PlrArray2String(array players)
 	}
 	return s;
 }
+
+// Shuffle array in place
+global func ShuffleArray(array arr)
+{
+	var n = GetLength(arr);
+	for (var i = 0; i < n; ++i)
+	{
+		var j = Random(n);
+		var v = arr[j];
+		arr[j] = arr[i];
+		arr[i] = v;
+	}
+	return arr;
+}
