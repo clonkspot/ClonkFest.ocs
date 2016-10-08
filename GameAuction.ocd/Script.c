@@ -13,7 +13,7 @@ local Description = "$Description$";
 func GetGameAuthor() { return "Luchs"; }
 func GetGameSection() { return "HotIce"; }
 func GetGameClonkMaxEnergy() { return 50; }
-func GetGameStartPos(int player, int start_index, int max_index) { return {x=WheelX-100+Random(100), y=WheelY}; }
+func GetGameStartPos(int player, int start_index, int max_index) { return {x=LandscapeWidth()/2-100+Random(100), y=WheelY}; }
 func GetGameClonkMaxContents() { return 5; }
 
 func IsGameLastManStanding() { return true; }
@@ -58,12 +58,14 @@ func InitGame(array players)
 
 	round = 0;
 	item_count = BoundBy(GetLength(players), MinItemCount, MaxItemCount);
+	return inherited(players, ...);
 }
 
 func StartGame(array players)
 {
 	inherited(players);
 	StartAuction();
+	return inherited(players, ...);
 }
 
 func StartAuction()

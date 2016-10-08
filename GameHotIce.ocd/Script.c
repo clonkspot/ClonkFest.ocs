@@ -17,7 +17,7 @@ func GetGameStartPos(int player, int start_index, int max_index)
 {
 	var map_zoom = LandscapeWidth() / map_width;
 	var pos = player_spawn_positions[start_index % GetLength(player_spawn_positions)];
-	return {x=pos[0]*map_zoom, y=pos[1]*map_zoom};
+	return {x=pos[0]*map_zoom+map_zoom/2, y=pos[1]*map_zoom};
 }
 func GetGameClonkMaxContents() { return 2; }
 
