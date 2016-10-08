@@ -52,7 +52,7 @@ private func FxIntPowerupTimer(object target, effect, int fxtime)
 		if (ball)
 		{
 			DoPowerup(ball, powerup);
-			var game = FindObject(Find_ID(Game_S2BouncingBalls));
+			var game = FindObject(Find_ID(Game_BouncingBalls));
 			if (game) game->SchedulePowerup();
 			RemoveObject();
 			return FX_Execute_Kill;
@@ -134,7 +134,7 @@ func FxSuperberryStop(object target, proplist fx, int reason, bool temporary)
 private func Powerup_WallKit(ball)
 {
 	// Walls in all directions
-	var game = FindObject(Find_ID(Game_S2BouncingBalls));
+	var game = FindObject(Find_ID(Game_BouncingBalls));
 	if (game) for (var i=0; i<3; ++i) game->LaunchWall(i);
 	return true;
 }
