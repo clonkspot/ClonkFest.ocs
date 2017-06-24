@@ -486,7 +486,7 @@ func InitializeObjects()
 	Axe1611->SetPosition(647, 209);
 
 	var Barrel1634 = CreateObjectAbove(Barrel, 208, 156);
-	Barrel1634->SetFilled("Water", 300);
+	Barrel1634->PutLiquid(Water, 300);
 
 	CreateObjectAbove(DynamiteBox, 123, 550);
 
