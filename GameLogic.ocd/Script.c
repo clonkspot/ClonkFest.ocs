@@ -251,7 +251,7 @@ private func OpenHintGUI()
 public func Destruction(...)
 {
 	if (container_id) GuiClose(container_id);
-	if (menu) menu->RemoveObect();
+	if (menu) menu->RemoveObject();
 	return _inherited(...);
 }
 
