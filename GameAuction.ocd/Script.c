@@ -57,7 +57,7 @@ func InitGame(array players)
 		CreateObjectAbove(WoodenBridge, WheelX + ((i%2)*2-1) * (i+1)/2 * WoodenBridge->GetDefWidth(), WheelY + WoodenBridge->GetDefHeight())->MakeInvincible();
 
 	round = 0;
-	item_count = BoundBy(GetLength(players), MinItemCount, MaxItemCount);
+	item_count = BoundBy(GetLength(players) + 1, MinItemCount, MaxItemCount);
 	return inherited(players, ...);
 }
 
@@ -81,93 +81,58 @@ func StartAuction()
 	state = "bidding";
 }
 
+func DoAuction(object wheel)
+{
+	var bids = wheel->GetBids();
+	var winner_index = 0;
+	// Tiebreak: wealth, number of points
+	for (var i = 1; i < GetLength(bids) && bids[i].bid == bids[winner_index].bid; i++)
+	{
+		var plr_winner    = GetPlayerByIndex(bids[winner_index].player_index);
+		var plr_i         = GetPlayerByIndex(bids[i].player_index);
+		var wealth_winner = GetWealth(plr_winner);
+		var wealth_i      = GetWealth(plr_i);
+		var score_winner  = g_clonk_fest->GetPlayerScore(plr_winner);
+		var score_i       = g_clonk_fest->GetPlayerScore(plr_i);
+		if (
+			// higher wealth?
+			wealth_winner < wealth_i
+			// or same wealth, but lower score?
+			|| (wealth_winner == wealth_i && score_winner > score_i)
+		)
+			winner_index = i;
+	}
+	var second_index = 1;
+	if (winner_index > 0) second_index = 1;
+	var winner = GetPlayerByIndex(bids[winner_index].player_index);
+	var winner_bid = bids[winner_index].bid;
+	var second = GetPlayerByIndex(bids[second_index].player_index);
+	var second_bid = bids[second_index].bid;
+	wheel->ShowWinner(winner, second, winner_bid, second_bid);
+	TransferWin(winner, second_bid, wheel->GetItem());
+}
+
 func FinishAuction()
 {
-	// Bids are by player index (not player number).
-	var auctions = [];
+	var delay = 1;
 	for (var wheel in FindObjects(Find_ID(AuctionWheel)))
 	{
-		var auction = { wheel = wheel, item = wheel.item, bids = wheel->GetBids() };
-		PushBack(auctions, auction);
+		ScheduleCall(this, this.DoAuction, delay, 0, wheel);
+		delay += 50;
 	}
-	// Determine cost according to VCG auction.
-	var winners = FindWinners(auctions).winners;
-	for (var i = 0; i < GetLength(auctions); i++)
-	{
-		var auction = auctions[i], winner = winners[i];
-		if (winner == nil) continue;
-		var v1 = FindWinners(auctions, winner).value;
-		var v2 = FindWinners(auctions, winner, i).value;
-		var cost = v1 - v2;
-		var plr = GetPlayerByIndex(winner);
-		TransferWin(plr, cost, auction.item);
-		auction.wheel->ShowWinner(plr, cost);
-	}
-	Sound("UI::Cash", true);
-	ScheduleCall(this, this.NextRound, 90, 0);
+	ScheduleCall(this, this.NextRound, delay + 90, 0);
 	state = "waitfornextround";
-}
-
-// Find winner for each item, which is the player with the highest bid.
-// Optionally skip a player and/or and auction.
-func FindWinners(array auctions, int skip_player, int skip_auction)
-{
-	// Create sorted list of bids.
-	var bids = [];
-	for (var i = 0; i < GetLength(auctions); i++)
-	{
-		if (i == skip_auction) continue;
-		var auction = auctions[i];
-		for (var j = 0; j < GetLength(auction.bids); j++)
-			if (j != skip_player)
-				PushBack(bids, {
-					bid = auction.bids[j],
-					player = j,
-					auction = i,
-				});
-	}
-	SortArrayByProperty(bids, "bid", true);
-
-	// The idea here is to maximize value. However, this is only a simple
-	// greedy algorithm for now...
-	var wealth = WealthArray();
-	var winners = CreateArray(GetLength(auctions));
-	var value = 0;
-	for (var i = 0; i < GetLength(bids); i++)
-	{
-		var bid = bids[i];
-		if (winners[bid.auction] != nil) continue; // *cough*
-		if (wealth[bid.player] >= bid.bid)
-		{
-			winners[bid.auction] = bid.player;
-			value += bid.bid;
-			wealth[bid.player] -= bid.bid;
-		}
-		else
-		{
-			// Not enough money - reduce bid and re-sort.
-			bid.bid = wealth[bid.player];
-			SortArrayByProperty(bids, "bid", true);
-			i -= 1;
-		}
-	}
-
-	return { winners = winners, value = value };
-}
-
-func WealthArray()
-{
-	var wealth = CreateArray(GetPlayerCount());
-	for (var i = 0; i < GetPlayerCount(); i++)
-		wealth[i] = GetWealth(GetPlayerByIndex(i));
-	return wealth;
 }
 
 func TransferWin(int plr, int cost, id item_id)
 {
 	//Log("%s wins %s for %d {{Icon_Wealth}}", GetPlayerName(plr), item->GetName(), cost);
+	var clonk = GetCursor(plr);
+	clonk->Message("{{%i}} ({{Icon_Wealth}} %d)", item_id, cost);
+	clonk->Sound("FestWin*");
+	Sound("UI::Cash", true, nil, plr);
 	DoWealth(plr, -cost);
-	var item = GetCursor(plr)->CreateContents(item_id);
+	var item = clonk->CreateContents(item_id);
 	if (item_id == Blunderbuss)
 		item->CreateContents(LeadBullet);
 	else if (item_id == Bow)

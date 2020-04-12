@@ -16,6 +16,11 @@ public func SetItem(id item)
 	SetObjDrawTransform(1000, 0, 0, 0, 1000, -30000, 1);
 }
 
+public func GetItem()
+{
+	return this.item;
+}
+
 private func ShowBids()
 {
 	CustomMessage("", this);
@@ -26,10 +31,11 @@ private func ShowBids()
 	}
 }
 
-public func ShowWinner(int plr, int cost)
+public func ShowWinner(int winner, int second, int winner_bid, int second_bid)
 {
-	// TODO: Color does not seem to work
-	CustomMessage(Format("@%s|{{Icon_Wealth}} %d", GetPlayerName(plr), cost), this, nil, 0, 0, GetPlayerColor(plr));
+	CustomMessage("", this);
+	CustomMessage(Format("@1. %s|{{Icon_Wealth}} %d", GetPlayerName(winner), winner_bid), this, nil, 0, -30, GetPlayerColor(winner), nil, nil, MSG_Multiple);
+	CustomMessage(Format("@2. %s|{{Icon_Wealth}} %d", GetPlayerName(second), second_bid), this, nil, 0,   0, GetPlayerColor(second), nil, nil, MSG_Multiple);
 }
 
 public func GetBids()
@@ -37,8 +43,12 @@ public func GetBids()
 	var b = CreateArray(GetPlayerCount());
 	for (var i = 0; i < GetPlayerCount(); i++)
 	{
-		b[i] = bids[GetPlayerByIndex(i)];
+		b[i] = {
+			bid = Min(bids[GetPlayerByIndex(i)], GetWealth(GetPlayerByIndex(i))),
+			player_index = i,
+		};
 	}
+	SortArrayByProperty(b, "bid", true);
 	return b;
 }
 
