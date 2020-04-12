@@ -1,2 +1,2 @@
-Name=Lücken
-Description=Finde die Lücken im Stein, um zur Flagge zu gelangen!
+Name=LÃ¼cken
+Description=Finde die LÃ¼cken im Stein, um zur Flagge zu gelangen!

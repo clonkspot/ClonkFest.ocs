@@ -1,2 +1,2 @@
 Name=Pilz
-PickMushroom=Pilz pflücken
+PickMushroom=Pilz pflÃ¼cken
