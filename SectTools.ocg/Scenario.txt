@@ -1,2 +1,5 @@
 [Landscape]
 Sky=Clouds2
+LeftOpen=224
+RightOpen=224
+AutoScanSideOpen=0

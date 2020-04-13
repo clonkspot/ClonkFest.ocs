@@ -56,7 +56,7 @@ local ActMap = {
 		Delay = 1,
 		X = 0,
 		Y = 0,
-		Wdt = 40,
+		Wdt = 20,
 		Hgt = 8,
 		NextAction = "Float",
 	},

@@ -31,7 +31,7 @@ public func HitObject(object obj)
 	obj->~OnProjectileHit(this);
 	WeaponTumble(obj, this->TumbleStrength());
 	obj->SetYDir(-50);
-	obj->Hurt();
+	obj->PlaySoundHurt();
 	RemoveEffect("HitCheck", this);
 	AddEffect("Cooldown", this, 20, 10);
 	}
