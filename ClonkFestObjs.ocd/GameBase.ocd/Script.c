@@ -386,7 +386,7 @@ func Definition()
 		ContactIncinerate = 0,
 		HasFeelings = true, // Ghosts have feelings, too!
 		Visibility = VIS_Owner | VIS_God,
-		ObjectControl = this.Ghost_ObjectControl,
+		ObjectControl = this.ObjectControl_NoInteraction,
 		IsProjectileTarget = this.IsNotGame,
 	};
 	return true;
@@ -403,7 +403,7 @@ func Ghost_Initialize()
 	return true;
 }
 
-func Ghost_ObjectControl(int plr, int ctrl, int x, int y, int strength, bool repeat, int status)
+func ObjectControl_NoInteraction(int plr, int ctrl, int x, int y, int strength, bool repeat, int status)
 {
 	// Ghosts shouldn't do contents menus
 	if (ctrl == CON_Contents && status == CONS_Down)

@@ -38,6 +38,8 @@ func InitGame(array players)
 		var lorry = GetCrew(plr)->CreateObjectAbove(Lorry,0,0,plr);
 		GetCrew(plr)->SetCommand("Grab", lorry);
 		UpdateLorryText(lorry);
+		// Disable interaction menu to prevent stealing berries.
+		GetCrew(plr).ObjectControl = ObjectControl_NoInteraction;
 		
 		//Make 1 start berry for every player
 		var berry = CreateObjectAbove(MySproutberry, RandomX(20, LandscapeWidth()-20), RandomX(150, 170));
