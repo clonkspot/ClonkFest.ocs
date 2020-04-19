@@ -1,0 +1,2 @@
+Name=Boompack Shooting Ranch
+Description=Try to be the first to reach 1000 points by hitting the targets that appear on the map.

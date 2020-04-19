@@ -1,0 +1,2 @@
+Name=Boompack-Zielschießen
+Description=Versuche als Erster 1000 Punkte zu erreichen, indem du die Ziele abschießt.

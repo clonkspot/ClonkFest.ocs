@@ -1,0 +1,6 @@
+[DefCore]
+id=BoomTarget
+Version=6,0
+Category=C4D_StaticBack
+Width=25
+Height=25
