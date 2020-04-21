@@ -1,0 +1,2 @@
+Name=Door Puzzle
+Description=Carry the Wipf to the gold idol! The first team wins.

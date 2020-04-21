@@ -1,0 +1,2 @@
+Name=Türrätsel
+Description=Bringe den Wipf zur Goldstatue! Das erste Team gewinnt.
