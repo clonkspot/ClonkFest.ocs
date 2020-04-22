@@ -10,7 +10,7 @@ local next_game; // set if a specific game is called next
 local score;
 local score_to_win;
 local fest_winners;
-local open_games;
+local game_times, cur_game_idx, cur_game_time;
 
 /* Initialization */
 
@@ -68,7 +68,7 @@ func StartFest()
 {
 	score = [];
 	score_to_win = Max(5, 10 - GetStartupPlayerCount()/2);//Max(GetLength(games) * 2 / 3,1);
-	open_games = games[:];
+	game_times = CreateArray(GetLength(games));
 	Scoreboard->Init([{key = "wins", title = Nugget, sorted = true, desc = true, default = Format("0/%d", score_to_win), priority = 75}]);
 	for (var i=0; i<GetPlayerCount(C4PT_User); ++i)
 	{
@@ -117,6 +117,11 @@ global func ClonkFest_NextGame(object clonk_fest)
 
 func NextGame()
 {
+	// Accounting
+	if (cur_game_idx != nil)
+		game_times[cur_game_idx] += FrameCounter() - cur_game_time;
+	cur_game_time = FrameCounter();
+
 	// Determine next game
 	var game_id;
 	// Was there a wish?
@@ -127,15 +132,23 @@ func NextGame()
 	}
 	else
 	{
-		// Otherwise, pick at random
-		if (!open_games || !GetLength(open_games)) open_games = games[:];
-		var n_open = GetLength(open_games);
-		var idx = Random(n_open);
-		game_id = open_games[idx];
-		--n_open;
-		if (idx < n_open) open_games[idx] = open_games[n_open];
-		SetLength(open_games, n_open);
+		// Otherwise, pick at random (lottery scheduling), inversely weighted by previous play time, squared.
+		var max = Reduce(game_times, Max, 0) + 1;
+		var sum = 0;
+		for (var t in game_times)
+			sum += (max - t) ** 2;
+		var r = Random(sum);
+		for (var i = 0; i < GetLength(games); i++)
+		{
+			r -= (max - game_times[i]) ** 2;
+			if (r < 0)
+			{
+				game_id = games[i];
+				break;
+			}
+		}
 	}
+	cur_game_idx = GetIndexOf(games, game_id);
 	// Start it!
 	var game = CreateObject(game_id);
 	game->InitGameBase();
