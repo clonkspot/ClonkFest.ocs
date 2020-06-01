@@ -10,7 +10,7 @@ local next_game; // set if a specific game is called next
 local score;
 local score_to_win;
 local fest_winners;
-local game_times, cur_game_idx, cur_game_time;
+local cur_game_idx, cur_game_time;
 
 /* Initialization */
 
@@ -21,8 +21,13 @@ func Initialize()
 	var def,i,n_games;
 	while (def = GetDefinition(i++))
 		if (def->~IsGame() && def != GameBase)
-			games[n_games++] = def;
+			games[n_games++] = {
+				def = def,
+				time = 0,
+			};
 	Log("Loaded %d games.", n_games);
+	// games in front are more likely to be picked, so start out with a shuffled array
+	ShuffleArray(games);
 	// Status
 	this.Visibility = VIS_None;
 	return _inherited(...);
@@ -53,7 +58,7 @@ func RemovePlayer(int plr)
 
 func InitFest()
 {
-	for (var game in games) game->~InitFest();
+	for (var game in games) game.def->~InitFest();
 	return true;
 }
 
@@ -61,14 +66,13 @@ func GetRandomGame()
 {
 	var n = GetLength(games);
 	if (!n) return nil;
-	return games[Random(n)];
+	return games[Random(n)].def;
 }
 
 func StartFest()
 {
 	score = [];
 	score_to_win = Max(5, 10 - GetStartupPlayerCount()/2);//Max(GetLength(games) * 2 / 3,1);
-	game_times = CreateArray(GetLength(games));
 	Scoreboard->Init([{key = "wins", title = Nugget, sorted = true, desc = true, default = Format("0/%d", score_to_win), priority = 75}]);
 	for (var i=0; i<GetPlayerCount(C4PT_User); ++i)
 	{
@@ -119,38 +123,29 @@ func NextGame()
 {
 	// Accounting
 	if (cur_game_idx != nil)
-		game_times[cur_game_idx] += FrameCounter() - cur_game_time;
+		games[cur_game_idx].time += FrameCounter() - cur_game_time;
 	cur_game_time = FrameCounter();
+	SortArrayByProperty(games, "time");
 
 	// Determine next game
-	var game_id;
+	cur_game_idx = nil;
 	// Was there a wish?
 	if (next_game)
 	{
-		game_id = next_game;
-		next_game = nil;
-	}
-	else
-	{
-		// Otherwise, pick at random (lottery scheduling), inversely weighted by previous play time, squared.
-		var max = Reduce(game_times, Max, 0) + 1;
-		var sum = 0;
-		for (var t in game_times)
-			sum += (max - t) ** 2;
-		var r = Random(sum);
 		for (var i = 0; i < GetLength(games); i++)
-		{
-			r -= (max - game_times[i]) ** 2;
-			if (r < 0)
+			if (games[i].def == next_game)
 			{
-				game_id = games[i];
+				cur_game_idx = i;
 				break;
 			}
-		}
+		next_game = nil;
 	}
-	cur_game_idx = GetIndexOf(games, game_id);
+	if (cur_game_idx == nil)
+	{
+		cur_game_idx = Random(Random(GetLength(games)));
+	}
 	// Start it!
-	var game = CreateObject(game_id);
+	var game = CreateObject(games[cur_game_idx].def);
 	game->InitGameBase();
 }
 
